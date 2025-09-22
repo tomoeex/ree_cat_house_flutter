@@ -86,11 +86,11 @@ class RHelperFunctions {
 
   static double screenHeight() {
     return MediaQuery.of(Get.context!).size.height;
-  }
+  } // คือความสูงของหน้าจอ
 
   static double screenWidth() {
   return MediaQuery.of(Get.context!).size.width;
-  }
+  } // คือความกว้างของหน้าจอ
 
   static String getFormattedDate(DateTime date, {String format = 'dd MMM yyyy'}) {
     return DateFormat(format).format(date);

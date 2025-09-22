@@ -16,22 +16,73 @@ class OnboardingScreen extends StatelessWidget {
             PageView(
               children: [
                 // Onboarding Page 1
-                Image(
-                  width: RHelperFunctions.screenWidth() * 0.8,
-                  height: RHelperFunctions.screenHeight() * 0.6,
-                  image: AssetImage(RImages.onBoardingImage1),
+              Column(
+                children: [
+                  Image(
+                    width: RHelperFunctions.screenWidth() * 0.8,
+                    height: RHelperFunctions.screenHeight() * 0.6,
+                    image: AssetImage(RImages.onBoardingImage1),
                   ),
-                  SizedBox(height: RSizes.spaceBtwItems),
+                  const SizedBox(height: RSizes.spaceBtwItems),
                   Text(
-                    RTexts.onBoardingTitle1, style: Theme.of(context).textTheme.headlineSmall, textAlign: TextAlign.center,
+                    RTexts.onBoardingTitle1,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                    textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: RSizes.spaceBtwItems), 
+                  const SizedBox(height: RSizes.spaceBtwItems),
+                  Text(
+                    RTexts.onBoardingSubTitle1,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
 
-                  Text(
-                    RTexts.onBoardingSubTitle1, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center,
-                  ),
                 // Onboarding Page 2
+              Column(
+                children: [
+                  Image(
+                    width: RHelperFunctions.screenWidth() * 0.8,
+                    height: RHelperFunctions.screenHeight() * 0.6,
+                    image: AssetImage(RImages.onBoardingImage2),
+                  ),
+                  const SizedBox(height: RSizes.spaceBtwItems),
+                  Text(
+                    RTexts.onBoardingTitle1,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: RSizes.spaceBtwItems),
+                  Text(
+                    RTexts.onBoardingSubTitle1,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+              
                 // Onboarding Page 3
+              Column(
+                children: [
+                  Image(
+                    width: RHelperFunctions.screenWidth() * 0.8,
+                    height: RHelperFunctions.screenHeight() * 0.6,
+                    image: AssetImage(RImages.onBoardingImage3),
+                  ),
+                  const SizedBox(height: RSizes.spaceBtwItems),
+                  Text(
+                    RTexts.onBoardingTitle1,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: RSizes.spaceBtwItems),
+                  Text(
+                    RTexts.onBoardingSubTitle1,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
               ],
             )
           // Skip Button
