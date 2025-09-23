@@ -33,20 +33,20 @@ class OnboardingScreen extends StatelessWidget {
                 // Onboarding Page 1
                 OnboardingPage(
                   image: RImages.onBoardingImage1, 
-                  title: RTexts.onBoardingTitle1, 
-                  subtitle: RTexts.onBoardingSubTitle1
+                  title: RTexts.onboardingTitle1, 
+                  subtitle: RTexts.onboardingSubTitle1
                   ),
                   // Onboarding Page 2
                 OnboardingPage(
                   image: RImages.onBoardingImage2, 
-                  title: RTexts.onBoardingTitle2, 
-                  subtitle: RTexts.onBoardingSubTitle2
+                  title: RTexts.onboardingTitle2, 
+                  subtitle: RTexts.onboardingSubTitle2
                   ),
                   // Onboarding Page 3
                 OnboardingPage(
                   image: RImages.onBoardingImage3, 
-                  title: RTexts.onBoardingTitle3, 
-                  subtitle: RTexts.onBoardingSubTitle3
+                  title: RTexts.onboardingTitle3, 
+                  subtitle: RTexts.onboardingSubTitle3
                   ),
               ],
             ),
