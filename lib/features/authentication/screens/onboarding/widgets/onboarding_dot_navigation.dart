@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ree_cat_house/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/device/device_utillity.dart';
@@ -13,13 +14,15 @@ class OnboardingDotNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = OnBoardingController.instance;
     final dark = RHelperFunctions.isDarkMode(context);
     return Positioned(
       bottom: RDeviceUtils.getBottomNavigationBarHeight() + 25,
       left: RSizes.defaultSpace,
       child: SmoothPageIndicator(
-        controller: PageController(), // PageController
         count: 3,
+        controller: controller.pageController,
+        onDotClicked: controller.dotNavigationClick, // PageController
         effect: ExpandingDotsEffect(
           activeDotColor: dark ? RColors.light : RColors.dark,
           dotHeight: 6),
