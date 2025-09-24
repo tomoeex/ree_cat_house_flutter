@@ -21,7 +21,7 @@ class RTexts {
   static const String password = "Password";
   static const String newPassword = "New Password";
   static const String username = "Username";
-  static const String phoneNumber = "Phone Number";
+  static const String phoneNo = "Phone Number";
   static const String rememberMe = "Remember Me";
   static const String forgetPassword = "Forget Password";
   static const String signIn = "Sign In";
@@ -46,13 +46,15 @@ class RTexts {
   static const String confirmEmail = "Verify your email address!";
   static const String confirmEmailSubTitle = "Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personalized Offers.";
   static const String emailNotReceivedTitle = "Didn't get the email? Check your junk/spam or resend it.";
-  static const String emailNotReceivedSubTitle = "Your Account successfully created!";
-  static const String yourAccountCreatedTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
+  static const String yourAccountCreatedTitle = "Your Account successfully created!";
+  static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
   
   // -- Home
 
   static const String homeAppBarTitle = "Good day for shopping";
   // static const String homeAppBarTitle = "วันนี้เหมาะสำหรับการช็อปปิ้ง";
   static const String homeAppBarSubTitle = "Tomoexx moonLight";
+
+  static get and => null;
   // static const String homeAppBarSubTitle = "ไทมูร์ ซิกันเดอร์";
 }
