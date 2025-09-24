@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ree_cat_house/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:ree_cat_house/features/authentication/screens/signup/signup.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/constants/text_strings.dart';
@@ -46,7 +47,7 @@ class RLoginForm extends StatelessWidget {
               ),
     
               // Forget Password
-              TextButton(onPressed: () {}, child: const Text(RTexts.forgetPassword)),
+              TextButton(onPressed: () => Get.to(() => const ForgetPassword()), child: const Text(RTexts.forgetPassword)),
             ],
           ),
     

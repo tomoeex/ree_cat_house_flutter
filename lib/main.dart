@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ree_cat_house/util/theme/theme.dart';
-import 'package:ree_cat_house/util/constants/colors.dart';
+
 import 'app.dart';
 void main() {
   // Todo: Add Widgets Binding = เพิ่มการเชื่อมโยงวิดเจ็ต
