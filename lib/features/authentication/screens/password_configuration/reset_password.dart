@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:ree_cat_house/util/constants/image_strings.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
+import 'package:ree_cat_house/util/constants/text_strings.dart';
+import 'package:ree_cat_house/util/helpers/helper_functions.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
@@ -11,27 +14,37 @@ class ResetPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () => Get.back(),icon: const Icon(CupertinoIcons.clear),
-          ),
-        ],
+        actions: [IconButton(onPressed: () => Get.back(), icon: const Icon(CupertinoIcons.clear))],
       ),
-      
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(RSizes.defaultSpace),
           child: Column(
             children: [
-              // Image with 60% of screen width
+              // Image
+              Image(image: const AssetImage(RImages.deliveredEmailIllustration), width: RHelperFunctions.screenWidth() * 0.6),
+              const SizedBox(height: RSizes.spaceBtwSections),
 
-              // Title & SubTitle
+              // Title & Subtitle
+              Text(RTexts.changeYourPasswordTitle, style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
+              const SizedBox(height: RSizes.spaceBtwItems),
+              Text(RTexts.changeYourPasswordSubTitle, style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
+              const SizedBox(height: RSizes.spaceBtwSections),
 
               // Buttons
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(onPressed: () {}, child: const Text(RTexts.done)),
+              ),
+              const SizedBox(height: RSizes.spaceBtwSections),
+              SizedBox(
+                width: double.infinity,
+                child: TextButton(onPressed: () {}, child: const Text(RTexts.resendEmail)),
+              ),
             ],
           ),
-        ), 
+        ),
       ), 
-    ); 
+    );
   }
 }
