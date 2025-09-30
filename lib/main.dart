@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'app.dart';
 void main() {
   // Todo: Add Widgets Binding = เพิ่มการเชื่อมโยงวิดเจ็ต

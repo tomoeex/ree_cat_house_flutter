@@ -3,19 +3,19 @@ import 'package:ree_cat_house/util/constants/colors.dart';
 
 class RCircularContainer extends StatelessWidget {
   const RCircularContainer({
-    super.key,
-    this.width = 400,
-    this.height = 400,
-    this.radius = 400,
-    this.padding = 0,
-    this.child,
+    super.key, 
+    this.child, 
+    this.width = 400, 
+    this.height = 400, 
+    this.radius = 400, 
+    this.padding = 0, 
     this.backgroundColor = RColors.white,
   });
 
   final double? width;
   final double? height;
-  final double? radius;
-  final double? padding;
+  final double radius;
+  final double padding;
   final Widget? child;
   final Color backgroundColor;
 
@@ -24,11 +24,11 @@ class RCircularContainer extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      padding: EdgeInsets.all(padding!),
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(radius!),
+        borderRadius: BorderRadius.circular(radius),
         color: backgroundColor,
-      ), 
+      ),
       child: child,
     );
   }
