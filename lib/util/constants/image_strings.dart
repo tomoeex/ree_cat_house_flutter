@@ -25,32 +25,31 @@ static const String verifyIllustration = "assets/images/animations/sammy-line-tr
   // -- Category Icons
 // static const String sportIcon 
 static const String dryFoodIcon = "assets/icons/categories/icons8-dry-food-50.png";
-
 // static const String clothIcon 
 static const String wetFoodIcon = "assets/icons/categories/icons8-wet-food-50.png";
-
 // static const String shoeIcon
 static const String treatsIcon = "assets/icons/categories/icons8-cat-treat-50.png";
-
 // static const String cosmeticsIcon 
 static const String litterIcon = "assets/icons/categories/icons8-litter-box-50.png";
-
 // static const String animalIcon 
 static const String toysIcon = "assets/icons/categories/icons8-cat-toy-50.png";
-
 // static const String toyIcon 
 static const String essentialsIcon = "assets/icons/categories/icons8-pet-supplies-50.png";
-
 // static const String furnitureIcon 
 static const String healthIcon = "assets/icons/categories/icons8-pet-health-50.png";
-
 // static const String jeweleryIcon 
 static const String groomingIcon = "assets/icons/categories/icons8-cat-grooming-50.png";
-
 // static const String electronicsIcon 
 static const String clothingIcon = "assets/icons/categories/icons8-cat-clothes-50.png";
-
 static const String furnitureScratchersIcon = "assets/icons/categories/icons8-cat-tree-50.png";
+
+// Banners
+static const String promoBanners1 = "assets/images/banners/promo-banner-1.png";
+static const String promoBanners2 = "assets/images/banners/promo-banner-2.png";
+static const String promoBanners3 = "assets/images/banners/promo-banner-3.png";
+static const String promoBanners4 = "assets/images/banners/promo-banner-4.png";
+static const String promoBanners5 = "assets/images/banners/promo-banner-5.png";
+static const String promoBanners6 = "assets/images/banners/promo-banner-6.png";
 }
 
 /*

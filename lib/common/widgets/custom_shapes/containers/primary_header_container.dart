@@ -5,7 +5,6 @@ import 'package:ree_cat_house/common/widgets/custom_shapes/containers/circular_c
 import 'package:ree_cat_house/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 
-
 class RPrimaryHeaderContainer extends StatelessWidget {
   const RPrimaryHeaderContainer({
     super.key,
@@ -30,9 +29,9 @@ class RPrimaryHeaderContainer extends StatelessWidget {
               Positioned(top: 100, right: -300, child: RCircularContainer(backgroundColor: RColors.textWhite.withOpacity(0.1))),
               child,
             ],
-          ), // Stack
-        ), // Container
-      ), // SizedBox
-    ); // TCurvedEdgesWidget
+          ), 
+        ), 
+      ), 
+    );
   }
 }
