@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
@@ -12,18 +13,23 @@ class RSearchContainer extends StatelessWidget {
     required this.text,
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
-    this.showBorder = true,
+    this.showBorder = true, 
+    this.onTap,
+    
   });
 
   final String text;
   final IconData? icon;
   final bool showBackground, showBorder;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final dark = RHelperFunctions.isDarkMode(context);
 
-    return Padding(
+    return GestureDetector(
+      onTap: onTap,
+      child:  Padding(
       padding: const EdgeInsets.symmetric(horizontal: RSizes.defaultSpace),
       child: Container(
         width: RDeviceUtils.getScreenWidth(context),
@@ -46,6 +52,7 @@ class RSearchContainer extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ),
+    ); 
   }
 }

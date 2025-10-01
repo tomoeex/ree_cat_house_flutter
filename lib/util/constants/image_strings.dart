@@ -23,15 +23,34 @@ static const String deliveredEmailIllustration = "assets/images/animations/sammy
 static const String verifyIllustration = "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";//
 
   // -- Category Icons
-static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
-static const String clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";
-static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
-static const String cosmeticsIcon = "assets/icons/categories/icons8-cosmetics-64.png";
-static const String animalIcon = "assets/icons/categories/icons8-dog-heart-64.png";
-static const String toyIcon = "assets/icons/categories/icons8-wooden-toy-car-50.png";
-static const String furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
-static const String jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
-static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
+// static const String sportIcon 
+static const String dryFoodIcon = "assets/icons/categories/icons8-dry-food-50.png";
+
+// static const String clothIcon 
+static const String wetFoodIcon = "assets/icons/categories/icons8-wet-food-50.png";
+
+// static const String shoeIcon
+static const String treatsIcon = "assets/icons/categories/icons8-cat-treat-50.png";
+
+// static const String cosmeticsIcon 
+static const String litterIcon = "assets/icons/categories/icons8-litter-box-50.png";
+
+// static const String animalIcon 
+static const String toysIcon = "assets/icons/categories/icons8-cat-toy-50.png";
+
+// static const String toyIcon 
+static const String essentialsIcon = "assets/icons/categories/icons8-pet-supplies-50.png";
+
+// static const String furnitureIcon 
+static const String healthIcon = "assets/icons/categories/icons8-pet-health-50.png";
+
+// static const String jeweleryIcon 
+static const String groomingIcon = "assets/icons/categories/icons8-cat-grooming-50.png";
+
+// static const String electronicsIcon 
+static const String clothingIcon = "assets/icons/categories/icons8-cat-clothes-50.png";
+
+static const String furnitureScratchersIcon = "assets/icons/categories/icons8-cat-tree-50.png";
 }
 
 /*
