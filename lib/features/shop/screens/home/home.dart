@@ -10,10 +10,12 @@ import 'package:ree_cat_house/common/widgets/custom_shapes/curved_edges/curved_e
 import 'package:ree_cat_house/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:ree_cat_house/common/widgets/image_text_widgets/vertical_imge_text.dart';
 import 'package:ree_cat_house/common/widgets/images/r_rounded_image.dart';
+import 'package:ree_cat_house/common/widgets/layouts/grid_layout.dart';
 import 'package:ree_cat_house/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:ree_cat_house/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
 import 'package:ree_cat_house/features/shop/screens/home/widgets/home_appbar.dart';
-import 'package:ree_cat_house/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:ree_cat_house/features/shop/screens/home/widgets/home_categories.dart' hide RGridLayout;
 import 'package:ree_cat_house/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/image_strings.dart';
@@ -63,16 +65,18 @@ class HomeScreen extends StatelessWidget {
             // Body -- Tutorial                       
             Padding(
               padding: const EdgeInsets.all(RSizes.defaultSpace),
-              child: RPromoSlider(
-                banners: [
-                RImages.promoBanners1,
-                RImages.promoBanners2,
-                RImages.promoBanners3,
-                RImages.promoBanners4,
-                RImages.promoBanners5,
-                RImages.promoBanners6,
+              child: Column(
+                children: [
+                RPromoSlider(banners: [
+                RImages.promoBanners1, RImages.promoBanners2, RImages.promoBanners3,
+                RImages.promoBanners4, RImages.promoBanners5, RImages.promoBanners6,]),
+                const SizedBox(height: RSizes.spaceBtwSections),
+
+                  // --- Popular Products -- Tutorial [Section # 3, Video # 7]
+                  RGridLayout(itemCount: 2, itemBuilder: (_ , index) => const RProductCardVertical()), 
                 ],
-                ),
+              )
+              
             ),
           ],
         ),

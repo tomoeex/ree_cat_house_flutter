@@ -14,7 +14,7 @@ class RHomeCategories extends StatelessWidget {
       height: 80,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 10,
+        itemCount: 9,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           return  RVerticalImageText(

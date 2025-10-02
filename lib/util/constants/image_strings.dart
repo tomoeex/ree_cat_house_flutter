@@ -41,7 +41,6 @@ static const String healthIcon = "assets/icons/categories/icons8-pet-health-50.p
 static const String groomingIcon = "assets/icons/categories/icons8-cat-grooming-50.png";
 // static const String electronicsIcon 
 static const String clothingIcon = "assets/icons/categories/icons8-cat-clothes-50.png";
-static const String furnitureScratchersIcon = "assets/icons/categories/icons8-cat-tree-50.png";
 
 // Banners
 static const String promoBanners1 = "assets/images/banners/promo-banner-1.png";
@@ -50,6 +49,28 @@ static const String promoBanners3 = "assets/images/banners/promo-banner-3.png";
 static const String promoBanners4 = "assets/images/banners/promo-banner-4.png";
 static const String promoBanners5 = "assets/images/banners/promo-banner-5.png";
 static const String promoBanners6 = "assets/images/banners/promo-banner-6.png";
+
+// Products
+static const String productImage1 = "assets/images/products/DryFood (1).png";
+static const String productImage2 = "assets/images/products/DryFood (2).png";
+static const String productImage3 = "assets/images/products/DryFood (3).png";
+static const String productImage4 = "assets/images/products/DryFood (4).png";
+static const String productImage5 = "assets/images/products/DryFood (5).png";
+static const String productImage6 = "assets/images/products/DryFood (6).png";
+static const String productImage7 = "assets/images/products/DryFood (7).png";
+static const String productImage8 = "assets/images/products/DryFood (8).png";
+static const String productImage9 = "assets/images/products/DryFood (9).png";
+static const String productImage10 = "assets/images/products/DryFood (10).png";
+static const String productImage11 = "assets/images/products/DryFood (11).png";
+static const String productImage12 = "assets/images/products/DryFood (12).png";
+static const String productImage13 = "assets/images/products/DryFood (13).png";
+static const String productImage14 = "assets/images/products/DryFood (14).png";
+static const String productImage15 = "assets/images/products/DryFood (15).png";
+static const String productImage16 = "assets/images/products/DryFood (16).png";
+static const String productImage17 = "assets/images/products/DryFood (17).png";
+static const String productImage18 = "assets/images/products/DryFood (18).png";
+static const String productImage19 = "assets/images/products/DryFood (19).png";
+static const String productImage20 = "assets/images/products/DryFood (20).png";
 }
 
 /*
@@ -62,5 +83,4 @@ Essentials – อุปกรณ์จำเป็น (ชามอาหาร
 Health – สุขภาพแมว (อาหารเสริม, วิตามิน, ยา)
 Grooming – การดูแลขน/ความสะอาด (แปรง, แชมพู, ตัดเล็บ)
 Clothing & Accessories – เสื้อผ้าและเครื่องประดับแมว (เสื้อ, ปลอกคอ, หมวก)
-Furniture & Scratchers – เฟอร์นิเจอร์/ที่ลับเล็บ/เตียงนอน
 */
