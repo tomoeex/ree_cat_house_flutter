@@ -8,6 +8,7 @@ import 'package:ree_cat_house/common/widgets/icons/r_circular_icon.dart';
 import 'package:ree_cat_house/common/widgets/images/r_rounded_image.dart';
 import 'package:ree_cat_house/common/widgets/texts/product_price_text.dart';
 import 'package:ree_cat_house/common/widgets/texts/product_title_text.dart';
+import 'package:ree_cat_house/common/widgets/texts/r_brand_title_text_with_verified_icon.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/image_strings.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
@@ -29,7 +30,7 @@ class RProductCardVertical extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [RShadowStyle.verticalProductShadow],
           borderRadius: BorderRadius.circular(RSizes.productImageRadius),
-          color: dark ? RColors.darkerGrey : RColors.white,
+          color: dark ? RColors.darkGrey : RColors.white,
         ),
         child: Column(
           children: [
@@ -74,18 +75,15 @@ class RProductCardVertical extends StatelessWidget {
                 children: [
                   const RProductTitleText(title: 'Buzz Beyond Cat Food', smallSize: true),
                   const SizedBox(height: RSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text(
-                        'Buzz',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(width: RSizes.xs),
-                      const Icon(Iconsax.verify5, color: RColors.primary, size: RSizes.iconXs),
-                    ],
-                  ),
+
+                  RBrandTitleWithVerifiedIcon(title: 'Bezz')
+                  
+                ],
+              ),
+            ),
+            // add Spacer
+            const  Spacer(),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -109,9 +107,6 @@ class RProductCardVertical extends StatelessWidget {
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
           ],
         ),
       ),

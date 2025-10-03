@@ -6,16 +6,17 @@ import 'package:ree_cat_house/util/constants/colors.dart';
 class RCartCounterIcon extends StatelessWidget {
   const RCartCounterIcon({
     super.key, 
-    required this.iconColor, 
+    this.iconColor, 
     required this.onPressed,
   });
 
-  final Color iconColor;
+  final Color? iconColor;
   final VoidCallback onPressed;
-
+  
 
   @override
   Widget build(BuildContext context) {
+    
     return Stack(
       children: [
         IconButton(onPressed: onPressed, icon: Icon(Iconsax.shopping_bag, color: iconColor)),

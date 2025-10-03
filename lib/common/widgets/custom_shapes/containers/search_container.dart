@@ -15,6 +15,7 @@ class RSearchContainer extends StatelessWidget {
     this.showBackground = true,
     this.showBorder = true, 
     this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: RSizes.defaultSpace),
     
   });
 
@@ -22,6 +23,7 @@ class RSearchContainer extends StatelessWidget {
   final IconData? icon;
   final bool showBackground, showBorder;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +32,8 @@ class RSearchContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child:  Padding(
-      padding: const EdgeInsets.symmetric(horizontal: RSizes.defaultSpace),
-      child: Container(
+        padding: padding,
+        child: Container(
         width: RDeviceUtils.getScreenWidth(context),
         padding: const EdgeInsets.all(RSizes.md),
         decoration: BoxDecoration(

@@ -35,6 +35,7 @@ class RTexts {
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend email in";
   static const String done = "Done";
+  static const String and = "and";
 
   // -- Authentication Headings Text
   static const String loginTitle = "Welcome back,";
@@ -56,7 +57,6 @@ class RTexts {
   // static const String homeAppBarTitle = "วันนี้เหมาะสำหรับการช็อปปิ้ง";
   static const String homeAppBarSubTitle = "Tomoexx moonLight";
 
-  static get and => null;
 
   // static const String homeAppBarSubTitle = "ไทมูร์ ซิกันเดอร์";
 }

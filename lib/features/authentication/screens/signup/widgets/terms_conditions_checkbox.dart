@@ -17,23 +17,43 @@ class RTermsAndConditionCheckbox extends StatelessWidget {
         SizedBox(width: 24, height: 24, child: Checkbox(value: true, onChanged: (value) {})),
         const SizedBox(width: RSizes.spaceBtwItems),
         Text.rich(
-          TextSpan(children: [
-            // ignore: unnecessary_string_interpolations
-            TextSpan(text: '${RTexts.iAgreeTo}', style: Theme.of(context).textTheme.bodySmall),
-            // ignore: unnecessary_string_interpolations
-            TextSpan(text: '${RTexts.privacyPolicy}', style: Theme.of(context).textTheme.bodyMedium!.apply(
-              color: dark ? RColors.white : RColors.primary,
-              decoration: TextDecoration.underline,
-              decorationColor: dark ? RColors.white : RColors.primary,
-            )),
-            TextSpan(text: '${RTexts.and}', style: Theme.of(context).textTheme.bodySmall),
-            TextSpan(text: RTexts.termsOfUse, style: Theme.of(context).textTheme.bodyMedium!.apply(
-              color: dark ? RColors.white : RColors.primary,
-              decoration: TextDecoration.underline,
-              decorationColor: dark ? RColors.white : RColors.primary,
-            )),
-          ]), 
-        ), 
+  TextSpan(
+    children: [
+      // ข้อความปกติ
+      TextSpan(
+        text: RTexts.iAgreeTo,
+        style: Theme.of(context).textTheme.bodySmall,
+      ),
+
+      // Privacy Policy (ลิงก์)
+      TextSpan(
+        text: " ${RTexts.privacyPolicy} ",
+        style: Theme.of(context).textTheme.bodyMedium!.apply(
+          color: dark ? RColors.white : RColors.primary,
+          decoration: TextDecoration.underline,
+          decorationColor: dark ? RColors.white : RColors.primary,
+        ),
+      ),
+
+      // and
+      TextSpan(
+        text: RTexts.and,
+        style: Theme.of(context).textTheme.bodySmall,
+      ),
+
+      // Terms of Use (ลิงก์)
+      TextSpan(
+        text: " \n${RTexts.termsOfUse}",
+        style: Theme.of(context).textTheme.bodyMedium!.apply(
+          color: dark ? RColors.white : RColors.primary,
+          decoration: TextDecoration.underline,
+          decorationColor: dark ? RColors.white : RColors.primary,
+        ),
+      ),
+    ],
+  ),
+),
+
       ],
     );
   }

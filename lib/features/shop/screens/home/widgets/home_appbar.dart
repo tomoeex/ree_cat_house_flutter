@@ -20,7 +20,8 @@ class RHomeAppBar extends StatelessWidget {
           Text(RTexts.homeAppBarSubTitle, style: Theme.of(context).textTheme.headlineSmall!.apply(color: RColors.white)),
         ],
       ), //
-      actions: [RCartCounterIcon(onPressed: () {}, iconColor: RColors.white,)],
+      actions: [
+        RCartCounterIcon(onPressed: () {}, iconColor: RColors.white,)],
     );
   }
 }
