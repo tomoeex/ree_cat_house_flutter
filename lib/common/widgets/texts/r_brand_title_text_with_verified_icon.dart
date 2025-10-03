@@ -34,7 +34,7 @@ class RBrandTitleWithVerifiedIcon extends StatelessWidget {
             maxLines: maxLines,
             textAlign: textAlign,
             brandTextSize: brandTextSize,
-          ), // TBrandTitleText
+          ),
         ), 
         const SizedBox(width: RSizes.xs),
         Icon(
