@@ -12,12 +12,13 @@ import 'package:ree_cat_house/util/helpers/helper_functions.dart';
 class RBrandCard extends StatelessWidget {
   const RBrandCard({
     super.key, 
-
+    // required this.brand,
     required this.showBorder, 
     this.onTap,
   });
 
 
+  // final BrandModel brand;
   final bool showBorder;
   final void Function()? onTap;
 
@@ -37,7 +38,7 @@ class RBrandCard extends StatelessWidget {
             // --- Icon
             Flexible(
               child: RCircularImage(
-                
+                // image: brand.image,
                 isNetworkImage: false,
                 image: RImages.litterIcon,
                 backgroundColor: Colors.transparent,
@@ -54,12 +55,12 @@ class RBrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
+                    // TBrandTitleWithVerifiedIcon(title: brand.name, brandTextSize: TextSizes.large),
                   const RBrandTitleWithVerifiedIcon(title: 'Bezz', brandTextSize: TextSizes.large),
 
                   Text(
                     '256 products with asjbsd sj',
-
+                    // ${brand.productsCount ?? 0} products',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                 ),

@@ -2,20 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:ree_cat_house/common/widgets/appbar/appbar.dart';
 import 'package:ree_cat_house/common/widgets/appbar/tabbar.dart';
-import 'package:ree_cat_house/common/widgets/brand/brand_show_case.dart';
-import 'package:ree_cat_house/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:ree_cat_house/common/widgets/custom_shapes/containers/search_container.dart';
-import 'package:ree_cat_house/common/widgets/images/r_circular_image.dart';
 import 'package:ree_cat_house/common/widgets/layouts/grid_layout.dart';
 import 'package:ree_cat_house/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ree_cat_house/common/widgets/brand/brand_card.dart';
-import 'package:ree_cat_house/common/widgets/texts/r_brand_title_text_with_verified_icon.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
 
 import 'package:ree_cat_house/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
-import 'package:ree_cat_house/util/constants/enums.dart';
-import 'package:ree_cat_house/util/constants/image_strings.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 
 import 'package:ree_cat_house/util/helpers/helper_functions.dart';

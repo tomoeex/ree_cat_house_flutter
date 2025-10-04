@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ree_cat_house/common/widgets/brand/brand_card.dart';
 import 'package:ree_cat_house/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
-import 'package:ree_cat_house/util/constants/image_strings.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/helpers/helper_functions.dart';
 
