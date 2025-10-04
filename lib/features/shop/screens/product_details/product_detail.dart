@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/utils.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
@@ -12,7 +11,6 @@ import 'package:ree_cat_house/features/shop/screens/product_details/widgets/rati
 import 'package:ree_cat_house/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/helpers/helper_functions.dart';
-import 'package:ree_cat_house/util/theme/custom_themes/bottom_sheet_theme.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});

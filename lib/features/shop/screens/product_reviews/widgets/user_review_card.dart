@@ -8,7 +8,7 @@ import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/helpers/helper_functions.dart';
 
 class UserReviewCard extends StatelessWidget {
-  const UserReviewCard({Key? key}) : super(key: key);
+  const UserReviewCard({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,7 @@ import 'package:ree_cat_house/common/widgets/custom_shapes/containers/primary_he
 import 'package:ree_cat_house/common/widgets/list_tiles/srttings_menu_tile.dart';
 import 'package:ree_cat_house/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
+import 'package:ree_cat_house/features/personalization/screens/address/address.dart';
 import 'package:ree_cat_house/features/personalization/screens/profile/profile.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
@@ -19,43 +20,92 @@ class SettingsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            /// --- Header
+            /// --- ส่วนหัว (Header)
             RPrimaryHeaderContainer(
               child: Column(
                 children: [
-                  /// -- App Bar
-                  RAppBar(title: Text('Account', style: Theme.of(context).textTheme.headlineMedium!.apply(color: RColors.white))),
-                  // const SizedBox(height: RSizes.spaceBtwSections),
+                  /// -- App Bar ด้านบน
+                  RAppBar(
+                    title: Text(
+                      'Account',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium!
+                          .apply(color: RColors.white),
+                    ),
+                  ),
 
-                  /// User Profile Card
-                  RUserProfileTile(onPressed: ()  => Get.to(() => const ProfileScreen())),
+                  /// -- โปรไฟล์ผู้ใช้
+                  RUserProfileTile(
+                    onPressed: () => Get.to(() => const ProfileScreen()),
+                  ),
                   const SizedBox(height: RSizes.spaceBtwSections),
                 ],
-              ), 
-            ), 
+              ),
+            ),
 
-            /// --- Body
+            /// --- ส่วนเนื้อหา (Body)
             Padding(
-              padding: EdgeInsets.all(RSizes.defaultSpace),
+              padding: const EdgeInsets.all(RSizes.defaultSpace),
               child: Column(
                 children: [
-                  /// --- Account Settings
-                  const  RSectionHeading(title: 'Account Settings', showActionButton: false,),
-                  const  SizedBox(height: RSizes.spaceBtwItems),
+                  /// --- หมวด Account Settings
+                  const RSectionHeading(
+                    title: 'Account Settings',
+                    showActionButton: false,
+                  ),
+                  const SizedBox(height: RSizes.spaceBtwItems),
 
-                  RSettingsMenuTile(icon: Iconsax.safe_home, title: 'My Addresses', subTitle: 'Set shopping delivery address',onTap: () {}),
-                  RSettingsMenuTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add, remove products and move to checkout',onTap: () {}),
-                  RSettingsMenuTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders',onTap: () {}),
-                  RSettingsMenuTile(icon: Iconsax.bank, title: 'Bank Account', subTitle: 'Withdraw balance to registered bank account',onTap: () {}),
-                  RSettingsMenuTile(icon: Iconsax.discount_shape, title: 'My Coupons', subTitle: 'List of all the discounted coupons',onTap: () {}),
-                  RSettingsMenuTile(icon: Iconsax.notification, title: 'Notifications', subTitle: 'Set any kind of notification message',onTap: () {}),
-                  RSettingsMenuTile(icon: Iconsax.security_card, title: 'Account Privacy', subTitle: 'Manage data usage and connected accounts',onTap: () {}),
+                  /// --- เมนูต่าง ๆ ของผู้ใช้
+                  RSettingsMenuTile(
+                    icon: Iconsax.safe_home,
+                    title: 'My Addresses',
+                    subTitle: 'Set shopping delivery address',
+                    onTap: () => Get.to(() => const UserAddressScreen()),
+                  ), 
 
-                  /// --- App Settings
-                  SizedBox(height: RSizes.spaceBtwSections),
-                  RSectionHeading(title: 'App Settings', showActionButton: false),
-                  SizedBox(height: RSizes.spaceBtwItems),
-                  RSettingsMenuTile(icon: Iconsax.document_upload, title: 'Load Data', subTitle: 'Upload Data to your Cloud Firebase',onTap: () {}),
+                  RSettingsMenuTile(
+                      icon: Iconsax.shopping_cart,
+                      title: 'My Cart',
+                      subTitle: 'Add, remove products and move to checkout',
+                      onTap: () {}),
+                  RSettingsMenuTile(
+                      icon: Iconsax.bag_tick,
+                      title: 'My Orders',
+                      subTitle: 'In-progress and Completed Orders',
+                      onTap: () {}),
+                  RSettingsMenuTile(
+                      icon: Iconsax.bank,
+                      title: 'Bank Account',
+                      subTitle: 'Withdraw balance to registered bank account',
+                      onTap: () {}),
+                  RSettingsMenuTile(
+                      icon: Iconsax.discount_shape,
+                      title: 'My Coupons',
+                      subTitle: 'List of all the discounted coupons',
+                      onTap: () {}),
+                  RSettingsMenuTile(
+                      icon: Iconsax.notification,
+                      title: 'Notifications',
+                      subTitle: 'Set any kind of notification message',
+                      onTap: () {}),
+                  RSettingsMenuTile(
+                      icon: Iconsax.security_card,
+                      title: 'Account Privacy',
+                      subTitle: 'Manage data usage and connected accounts',
+                      onTap: () {}),
+
+                  /// --- หมวด App Settings
+                  const SizedBox(height: RSizes.spaceBtwSections),
+                  const RSectionHeading(
+                      title: 'App Settings', showActionButton: false),
+                  const SizedBox(height: RSizes.spaceBtwItems),
+
+                  RSettingsMenuTile(
+                      icon: Iconsax.document_upload,
+                      title: 'Load Data',
+                      subTitle: 'Upload Data to your Cloud Firebase',
+                      onTap: () {}),
                   RSettingsMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',
@@ -77,7 +127,6 @@ class SettingsScreen extends StatelessWidget {
                 ],
               ),
             )
-
           ],
         ),
       ),
