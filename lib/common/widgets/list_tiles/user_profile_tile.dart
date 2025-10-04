@@ -7,8 +7,12 @@ import 'package:ree_cat_house/util/constants/image_strings.dart';
 
 class RUserProfileTile extends StatelessWidget {
   const RUserProfileTile({
-    super.key,
+    super.key, 
+    required this.onPressed, 
+    
   });
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class RUserProfileTile extends StatelessWidget {
       leading: const RCircularImage(image: RImages.user, width: 50, height: 50, padding: 0),
       title: Text('Tomoexx', style: Theme.of(context).textTheme.headlineSmall!.apply(color: RColors.white)),
       subtitle: Text('tomoexx@example.com', style: Theme.of(context).textTheme.bodyMedium!.apply(color: RColors.white)),
-      trailing: IconButton(onPressed: (){}, icon: const Icon(Iconsax.edit, color: RColors.white,)),
+      trailing: IconButton(onPressed: onPressed, icon: const Icon(Iconsax.edit, color: RColors.white,)),
     );
   }
 }

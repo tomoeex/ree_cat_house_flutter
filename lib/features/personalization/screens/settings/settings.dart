@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ree_cat_house/common/widgets/appbar/appbar.dart';
 import 'package:ree_cat_house/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:ree_cat_house/common/widgets/list_tiles/srttings_menu_tile.dart';
 import 'package:ree_cat_house/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
+import 'package:ree_cat_house/features/personalization/screens/profile/profile.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 
@@ -26,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
                   // const SizedBox(height: RSizes.spaceBtwSections),
 
                   /// User Profile Card
-                  RUserProfileTile(),
+                  RUserProfileTile(onPressed: ()  => Get.to(() => const ProfileScreen())),
                   const SizedBox(height: RSizes.spaceBtwSections),
                 ],
               ), 
