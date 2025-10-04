@@ -16,20 +16,17 @@ class RPrimaryHeaderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RCurvedEdgesWidget(
-      child: SizedBox(
-        height: 400,
-        child: Container(
-          color: RColors.primary,
-
-          /// -- [size.isFinite] is not true] Error -> Read README.md file at [DESIGN ERRORS] # 1
-          child: Stack(
-            children: [
-              /// Background Custom Shapes
-              Positioned(top: -150, right: -250, child: RCircularContainer(backgroundColor: RColors.textWhite.withOpacity(0.1))),
-              Positioned(top: 100, right: -300, child: RCircularContainer(backgroundColor: RColors.textWhite.withOpacity(0.1))),
-              child,
-            ],
-          ), 
+      child: Container(
+        color: RColors.primary,
+      
+        /// -- [size.isFinite] is not true] Error -> Read README.md file at [DESIGN ERRORS] # 1
+        child: Stack(
+          children: [
+            /// Background Custom Shapes
+            Positioned(top: -150, right: -250, child: RCircularContainer(backgroundColor: RColors.textWhite.withOpacity(0.1))),
+            Positioned(top: 100, right: -300, child: RCircularContainer(backgroundColor: RColors.textWhite.withOpacity(0.1))),
+            child,
+          ],
         ), 
       ), 
     );
