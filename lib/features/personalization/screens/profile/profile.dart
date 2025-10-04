@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:ree_cat_house/common/widgets/appbar/appbar.dart';
 import 'package:ree_cat_house/common/widgets/images/r_circular_image.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
