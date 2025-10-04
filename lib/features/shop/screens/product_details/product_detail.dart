@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/utils.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
@@ -7,6 +9,7 @@ import 'package:ree_cat_house/features/shop/screens/product_details/widgets/prod
 import 'package:ree_cat_house/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:ree_cat_house/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:ree_cat_house/features/shop/screens/product_details/widgets/rating_share_widget.dart';
+import 'package:ree_cat_house/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/helpers/helper_functions.dart';
 import 'package:ree_cat_house/util/theme/custom_themes/bottom_sheet_theme.dart';
@@ -63,7 +66,7 @@ class ProductDetailScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const RSectionHeading(title: 'Reviews (199)', showActionButton: false),
-                      IconButton(icon: const Icon(Iconsax.arrow_right_3, size: 18), onPressed: () {}),
+                      IconButton(icon: const Icon(Iconsax.arrow_right_3, size: 18), onPressed: () => Get.to(() => const ProductReviewsScreen())),
                     ],
                   ),
                   const SizedBox(height: RSizes.spaceBtwSections),

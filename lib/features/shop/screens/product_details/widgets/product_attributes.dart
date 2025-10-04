@@ -20,7 +20,7 @@ class RProductAttributes extends StatelessWidget {
         /// -- Selected Attribute Pricing & Description
         RRoundedContainer(
           padding: const EdgeInsets.all(RSizes.md),
-          backgroundColor: dark ? RColors.darkerGrey : RColors.grey,
+          backgroundColor: dark ? RColors.dark : RColors.grey,
           child:  Column(
             children: [
               /// Title, Price and Stock Status

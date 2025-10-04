@@ -18,7 +18,7 @@ class RBottomAddToCart extends StatelessWidget {
         vertical: RSizes.defaultSpace / 2,
       ),
       decoration: BoxDecoration(
-        color: dark ? RColors.darkerGrey : RColors.light,
+        color: dark ? RColors.dark : RColors.light,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(RSizes.cardRadiusLg),
           topRight: Radius.circular(RSizes.cardRadiusLg),

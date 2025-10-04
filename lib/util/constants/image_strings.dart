@@ -50,6 +50,11 @@ static const String promoBanners4 = "assets/images/banners/promo-banner-4.png";
 static const String promoBanners5 = "assets/images/banners/promo-banner-5.png";
 static const String promoBanners6 = "assets/images/banners/promo-banner-6.png";
 
+// /// -- Product Reviews
+static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.png";
+static const String userProfileImage2 = "assets/images/reviews/review_profile_image_2.png";
+static const String userProfileImage3 = "assets/images/reviews/review_profile_image_3.png";
+
 // profile
 static const String user = "assets/images/user/user.png";
 
