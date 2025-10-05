@@ -1,35 +1,19 @@
 # ree_cat_house
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
----
-การสร้างแอปพลิเคชัน E-Commerce ด้วย Flutter ครับ โดยเพลย์ลิสต์นี้แบ่งเนื้อหาออกเป็น 5 ส่วนหลักๆ ได้แก่
+การสร้างแอปพลิเคชัน E-Commerce ด้วย Flutter ครับ โดยเพลย์ลิสต์นี้แบ่งเนื้อหาออกเป็น 5 ส่วนหลักๆ ได้แก่ ✅
 #App Configuration: การตั้งค่าแอปพลิเคชัน 
 1. การสร้างโปรเจกต์ใหม่และตั้งค่าโครงสร้างโฟลเดอร์แบบมืออาชีพ (Create new Project, Setup Professional Folder Structure) ซึ่งเป็นขั้นตอนแรกที่สำคัญในการวางรากฐานของแอปพลิเคชัน
 2. การตั้งค่าธีมสว่างและมืด (Light & Dark Theme Setup) ที่รวมถึงการตั้งค่าปุ่ม, ช่องกรอกข้อความ, แถบแอป, ชิป และอื่นๆ เพื่อให้แอปพลิเคชันมีหน้าตาที่สวยงามและรองรับความชอบของผู้ใช้
 3. การสร้าง Helper Functions, Constants และ Utility Classes ซึ่งเป็นโค้ดส่วนช่วยที่ใช้ซ้ำๆ เพื่อลดความซ้ำซ้อนและทำให้การพัฒนาแอปพลิเคชันมีประสิทธิภาพมากขึ้น
 ---
-#Login Design: การออกแบบหน้าจอเข้าสู่ระบบ
+#Login Design: การออกแบบหน้าจอเข้าสู่ระบบ ✅
 1. Native Splash Screen: หน้าจอเริ่มต้น (splash screen) ที่จะแสดงขึ้นมาก่อนที่แอปจะโหลดเสร็จ
 2. 3 Onboarding Screens: หน้าจอแนะนำแอปพลิเคชัน 3 หน้า ที่จะช่วยให้ผู้ใช้ใหม่เข้าใจคุณสมบัติหลักของแอป
 3. Register Screen with Email Verification & Success Screen: หน้าจอสำหรับลงทะเบียน พร้อมระบบยืนยันอีเมลและหน้าจอแจ้งผลสำเร็จ
 4. Login Screen: หน้าจอสำหรับเข้าสู่ระบบ
 5. Forget Password & Reset Password: ระบบสำหรับกรณีที่ผู้ใช้ลืมรหัสผ่านและต้องการตั้งรหัสผ่านใหม่
 ---
-#E-Store Design: การออกแบบหน้าจอร้านค้า E-Commerce
+#E-Store Design: การออกแบบหน้าจอร้านค้า E-Commerce ✅
 1. แถบนำทางด้านล่าง (Bottom Navigation)
 2. การออกแบบแถบแอปแบบโค้งและแบบกำหนดเอง (Curved Design Challenge with Background, Custom AppBar)
 3. วิดเจ็ตสำหรับค้นหาและหมวดหมู่ที่เลื่อนได้ (Search Widget & Scrolling Categories)
