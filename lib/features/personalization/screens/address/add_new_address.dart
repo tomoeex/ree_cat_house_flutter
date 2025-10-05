@@ -30,7 +30,7 @@ class AddNewAddressScreen extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_3), labelText: "Street")),
+                      child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_4), labelText: "Street")),
                     ),
                     const SizedBox(width: 16),
                     Expanded(

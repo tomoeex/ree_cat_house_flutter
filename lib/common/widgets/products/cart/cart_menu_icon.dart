@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ree_cat_house/features/shop/screens/cart/cart.dart';
 
 import 'package:ree_cat_house/util/constants/colors.dart';
 
@@ -19,7 +21,7 @@ class RCartCounterIcon extends StatelessWidget {
     
     return Stack(
       children: [
-        IconButton(onPressed: onPressed, icon: Icon(Iconsax.shopping_bag, color: iconColor)),
+        IconButton(onPressed: () => Get.to(() => const CartScreen()), icon: Icon(Iconsax.shopping_bag, color: iconColor)),
         Positioned(
           right: 0,
           child: Container(
