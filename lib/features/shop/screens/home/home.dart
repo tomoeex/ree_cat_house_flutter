@@ -1,10 +1,12 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ree_cat_house/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:ree_cat_house/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:ree_cat_house/common/widgets/layouts/grid_layout.dart';
 import 'package:ree_cat_house/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
+import 'package:ree_cat_house/features/shop/screens/all_products/all_products.dart';
 import 'package:ree_cat_house/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ree_cat_house/features/shop/screens/home/widgets/home_categories.dart' hide RGridLayout;
 import 'package:ree_cat_house/features/shop/screens/home/widgets/promo_slider.dart';
@@ -60,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                 RImages.promoBanners4, RImages.promoBanners5, RImages.promoBanners6,]),
                 const SizedBox(height: RSizes.spaceBtwSections),
                   // heading
-                RSectionHeading(title: 'Popular Products', onPressed: () {}),
+                RSectionHeading(title: 'Popular Products', onPressed: () => Get.to(() => const AllProducts())),
                 const SizedBox(height: RSizes.spaceBtwItems),
                   // --- Popular Products -- Tutorial [Section # 3, Video # 7]
                   RGridLayout(itemCount: 4, itemBuilder: (_ , index) => const RProductCardVertical()), 
