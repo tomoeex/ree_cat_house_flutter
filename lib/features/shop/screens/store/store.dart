@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:ree_cat_house/common/widgets/appbar/appbar.dart';
 import 'package:ree_cat_house/common/widgets/appbar/tabbar.dart';
@@ -7,6 +8,7 @@ import 'package:ree_cat_house/common/widgets/layouts/grid_layout.dart';
 import 'package:ree_cat_house/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ree_cat_house/common/widgets/brand/brand_card.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
+import 'package:ree_cat_house/features/shop/screens/brand/all_brand.dart';
 
 import 'package:ree_cat_house/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
@@ -52,7 +54,7 @@ class StoreScreen extends StatelessWidget {
                       const  SizedBox(height: RSizes.spaceBtwSections),
       
                         ///Featured Brands
-                      RSectionHeading (title: 'Featured Brands', onPressed: (){}),
+                      RSectionHeading (title: 'Featured Brands', onPressed: () => Get.to(() => const AllBrandsScreen())),
                       const SizedBox (height: RSizes.spaceBtwItems / 1.5),
                       /// Brands GRID
                       RGridLayout(itemCount: 4,mainAxisExtent: 80, itemBuilder: (_, index) {

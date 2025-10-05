@@ -3,6 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:ree_cat_house/common/widgets/appbar/appbar.dart';
 import 'package:ree_cat_house/common/widgets/layouts/grid_layout.dart';
 import 'package:ree_cat_house/common/widgets/products/product_card/product_card_vertical.dart';
+import 'package:ree_cat_house/common/widgets/products/sortable/sortable_products.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 
 class AllProducts extends StatelessWidget {
@@ -15,21 +16,7 @@ class AllProducts extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(RSizes.defaultSpace),
-          child: Column(
-            children: [
-              /// Dropdown
-              DropdownButtonFormField(
-                decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
-                onChanged: (value){},
-                items: ['Name', 'Higher Price', 'Lower Price', 'Sale', 'Newest', 'Popularity']
-                  .map((option) => DropdownMenuItem(value: option, child: Text(option)))
-                  .toList(),
-              ),
-              const SizedBox (height: RSizes.spaceBtwSections),
-              /// Products
-              RGridLayout(itemCount: 4, itemBuilder: (_, index) => const RProductCardVertical()),
-            ],
-          ),
+          child: RSortableProducts(),
         ),
       ),
     );
