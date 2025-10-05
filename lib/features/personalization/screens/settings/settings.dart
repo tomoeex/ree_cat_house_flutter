@@ -8,6 +8,7 @@ import 'package:ree_cat_house/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
 import 'package:ree_cat_house/features/personalization/screens/address/address.dart';
 import 'package:ree_cat_house/features/personalization/screens/profile/profile.dart';
+import 'package:ree_cat_house/features/shop/screens/order/order.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 
@@ -73,7 +74,7 @@ class SettingsScreen extends StatelessWidget {
                       icon: Iconsax.bag_tick,
                       title: 'My Orders',
                       subTitle: 'In-progress and Completed Orders',
-                      onTap: () {}),
+                      onTap: () => Get.to(() => const OrderScreen()),),
                   RSettingsMenuTile(
                       icon: Iconsax.bank,
                       title: 'Bank Account',
