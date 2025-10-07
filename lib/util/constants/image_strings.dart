@@ -69,6 +69,9 @@ static const String successfulPaymentIcon ="assets/icons/payment_methods/success
 // profile
 static const String user = "assets/images/user/user.png";
 
+ // -- Phone Authentication Images
+static const String docerAnimation = "assets/images/animations/docerAnimation.gif";
+
 // Products
 static const String productImage1 = "assets/images/products/DryFood (1).png";
 static const String productImage2 = "assets/images/products/DryFood (2).png";

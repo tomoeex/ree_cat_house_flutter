@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ree_cat_house/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:ree_cat_house/features/authentication/screens/signup/verify_email.dart';
 import 'package:ree_cat_house/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
 
 import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/constants/text_strings.dart';
+import 'package:ree_cat_house/util/validators/validation.dart';
 
 
 class RSignupForm extends StatelessWidget {
@@ -14,13 +16,17 @@ class RSignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
     return Form(
+      key: controller.signupFormKey,
       child: Column(
         children: [
           Row(
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: controller.firstName,
+                  validator: (value) => RValidator.validateEmptyText('First Name', value),
                 expands: false,
                 decoration: const InputDecoration(labelText: RTexts.firstName, prefixIcon: Icon(Iconsax.user)),
               ),
@@ -30,6 +36,8 @@ class RSignupForm extends StatelessWidget {
     
             Expanded(
                 child: TextFormField(
+                  controller: controller.lastName,
+                  validator: (value) => RValidator.validateEmptyText('Last Name', value),
                 expands: false,
                 decoration: const InputDecoration(labelText: RTexts.lastName, prefixIcon: Icon(Iconsax.user)),
               ),
@@ -40,6 +48,8 @@ class RSignupForm extends StatelessWidget {
     
         // Username
         TextFormField(
+          controller: controller.username,
+          validator: (value) => RValidator.validateEmptyText('Username', value),
           expands: false,
           decoration: const InputDecoration(labelText: RTexts.username, prefixIcon: Icon(Iconsax.user_edit)),
         ),
@@ -47,23 +57,34 @@ class RSignupForm extends StatelessWidget {
     
         // Email
         TextFormField(
+          controller: controller.email,
+          validator: (value) => RValidator.validateEmail(value),
           decoration: const InputDecoration(labelText: RTexts.email, prefixIcon: Icon(Iconsax.direct)),
         ),
         const SizedBox(height: RSizes.spaceBtwInputFields),
     
         // Phone Number
         TextFormField(
+          controller: controller.phoneNumber,
+          validator: (value) => RValidator.validatePhoneNumber(value),
           decoration: const InputDecoration(labelText: RTexts.phoneNo, prefixIcon: Icon(Iconsax.call)),
         ),
         const SizedBox(height: RSizes.spaceBtwInputFields),
     
         // Password
-        TextFormField(
-          obscureText: true,
-          decoration: const InputDecoration(
-            labelText: RTexts.password,
-            prefixIcon: Icon(Iconsax.password_check),
-            suffixIcon: Icon(Iconsax.eye_slash),
+        Obx(
+          () => TextFormField(
+            validator: (value) => RValidator.validatePassword(value),
+            controller: controller.password,
+            obscureText: controller.hidePassword.value,
+            decoration: InputDecoration(
+              labelText: RTexts.password,
+              prefixIcon: const Icon(Iconsax.password_check),
+              suffixIcon: IconButton(
+                onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
+                icon:  Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye),
+                ),
+            ),
           ),
         ),
         const SizedBox(height: RSizes.spaceBtwSections),
@@ -75,7 +96,7 @@ class RSignupForm extends StatelessWidget {
         // Sign Up Button
         SizedBox(
           width: double.infinity, 
-          child: ElevatedButton(onPressed: () => Get.to(() => const VerifyEmailScreen()), child: const Text(RTexts.createAccount))
+          child: ElevatedButton(onPressed: () => controller.signup() , child: const Text(RTexts.createAccount))
         ),
       ],
     ),

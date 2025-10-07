@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ree_cat_house/features/authentication/controllers/signup/signup_controller.dart';
 
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
@@ -11,10 +13,19 @@ class RTermsAndConditionCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignupController.instance;
     final dark = RHelperFunctions.isDarkMode(context);
     return Row(
       children: [
-        SizedBox(width: 24, height: 24, child: Checkbox(value: true, onChanged: (value) {})),
+        SizedBox(
+          width: 24, 
+          height: 24, 
+          child:  Obx(
+            () => Checkbox(
+                value: controller.privacyPolicy.value, 
+                onChanged: (value) => controller.privacyPolicy.value = !controller.privacyPolicy.value)
+            ),
+          ),
         const SizedBox(width: RSizes.spaceBtwItems),
         Text.rich(
   TextSpan(
