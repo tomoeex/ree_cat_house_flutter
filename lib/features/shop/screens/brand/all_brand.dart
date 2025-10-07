@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:ree_cat_house/common/widgets/appbar/appbar.dart';
 import 'package:ree_cat_house/common/widgets/brand/brand_card.dart';
 import 'package:ree_cat_house/common/widgets/layouts/grid_layout.dart';
-import 'package:ree_cat_house/common/widgets/products/sortable/sortable_products.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
 import 'package:ree_cat_house/features/shop/screens/brand/brand_products.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';

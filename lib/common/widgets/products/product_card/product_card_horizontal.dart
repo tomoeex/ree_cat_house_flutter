@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ree_cat_house/common/styles/shadows.dart';
 import 'package:ree_cat_house/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:ree_cat_house/common/widgets/icons/r_circular_icon.dart';
 import 'package:ree_cat_house/common/widgets/images/r_rounded_image.dart';
@@ -108,7 +107,7 @@ class RProductCardHorizontal extends StatelessWidget {
                         child: const SizedBox(
                           width: RSizes.iconLg * 1.2,
                           height: RSizes.iconLg * 1.2,
-                          child: const Center(child: Icon(Iconsax.add, color: RColors.white)),
+                          child: Center(child: Icon(Iconsax.add, color: RColors.white)),
                         ),
                       ),
 

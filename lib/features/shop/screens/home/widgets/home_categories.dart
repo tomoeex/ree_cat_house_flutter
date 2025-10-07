@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ree_cat_house/common/widgets/image_text_widgets/vertical_imge_text.dart';
-import 'package:ree_cat_house/features/personalization/screens/address/address.dart';
 import 'package:ree_cat_house/features/shop/screens/sub_category/sub_categories.dart';
 import 'package:ree_cat_house/util/constants/image_strings.dart';
 

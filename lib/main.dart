@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:ree_cat_house/data/repositories/authentication/authentication_repository.dart';
 import 'app.dart';
-void main() {
-  // Todo: Add Widgets Binding = เพิ่มการเชื่อมโยงวิดเจ็ต
-  // Todo: Init Local Storage = เริ่มต้นการจัดเก็บข้อมูลภายในเครื่อง
-  // Todo: Await Native Splash = รอการแสดงหน้าจอเริ่มต้นของระบบ
-  //Todo: Initialize Firebase = เริ่มต้น Firebase
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  // Add Widgets Binding = เพิ่มการเชื่อมโยงวิดเจ็ต
+  final WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  // Getx Local Storage = การจัดเก็บข้อมูลภายในเครื่องของ Getx
+  await GetStorage.init();
+
+
+  // Await Native Splash = รอการแสดงหน้าจอเริ่มต้นของระบบ
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+
+  //Initialize Firebase = เริ่มต้น Firebase
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then(
+    (FirebaseApp value) => Get.put(AuthenticationRepository())
+  );
+
   //Todo: Initialize Authentication = เริ่มต้นการตรวจสอบสิทธิ์
 
 
   runApp(const App());
 }
-/* class App extends StatelessWidget {
-  const App({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      themeMode: ThemeMode.system,
-      theme:RAppTheme.lightTheme,
-      darkTheme: RAppTheme.darkTheme,
-    );
-  }
-} */
