@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ree_cat_house/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:ree_cat_house/features/authentication/screens/signup/verify_email.dart';
 import 'package:ree_cat_house/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
 
 import 'package:ree_cat_house/util/constants/sizes.dart';

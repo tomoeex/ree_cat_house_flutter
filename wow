@@ -1,81 +1,254 @@
-TBrandCard Class which every one was looking for.
+// File: advanced_programming_66.dart
+// สรุปเนื้อหา วิชา Advanced Programming (เทคโน รหัส 66)
+// หัวข้อ: async/await, modular programming, AlertDialog, dio, riverpod
+// ภาษา: ไทย (คำอธิบาย + ตัวอย่างโค้ด Flutter + Riverpod + Dio)
+// NOTE: ไฟล์นี้เป็นตัวอย่างการแยก module (service/provider/ui) แบบเรียบง่าย
+// ต้องเพิ่ม dependencies ใน pubspec.yaml:
+//   dio: ^5.0.0
+//   flutter_riverpod: ^2.0.0
+// แล้วรันในโปรเจกต์ Flutter
 
+/* ==========================
+  คำอธิบายสั้น ๆ (What & Why)
+  ==========================
+- async/await:
+  - คือ syntax สำหรับการทำงานแบบ asynchronous ใน Dart
+  - ใช้ทำงานที่ต้องรอผล (I/O, network, file) โดยไม่บล็อก UI thread
+  - รูปแบบ: ฟังก์ชันที่คืนค่า Future ต้องใส่ async, ในฟังก์ชันใช้ await เพื่อรอ Future ให้เสร็จ
+
+- Modular programming:
+  - คือแนวทางแยกโค้ดเป็นส่วนย่อย (module) เช่น services, repositories, providers, widgets
+  - ทำให้โค้ดอ่านง่าย ทดสอบง่าย และสามารถ reuse ได้
+
+- AlertDialog:
+  - กล่องข้อความแบบ modal ใน Flutter ใช้แสดง error/confirm/input ตอบโต้กับผู้ใช้
+  - สร้างด้วย showDialog() และ AlertDialog widget
+
+- dio:
+  - HTTP client library ที่มีฟีเจอร์เยอะ (interceptors, request/response transform, cancel, timeout)
+  - ใช้สำหรับเรียก API แทน http package แบบพื้นฐาน
+
+- riverpod:
+  - State management library ที่เป็น safer replacement ของ Provider
+  - มีรูปแบบ provider หลายประเภท (Provider, StateProvider, FutureProvider, StreamProvider, ฯลฯ)
+  - ช่วยจัดการ state, dependency injection, และ testable code
+
+==========================
+ข้อดี / ข้อเสียสั้น ๆ
+==========================
+- async/await:
+  - ข้อดี: อ่านง่าย, ลด callback hell, ทำงาน non-blocking
+  - ข้อเสีย: ต้องเข้าใจ Future/exception handling; ถ้าเรียก await หลายตัวแบบ sequential อาจช้ากว่า parallel
+
+- Modular programming:
+  - ข้อดี: อ่านง่าย แยกความรับผิดชอบ ช่วยทดสอบ
+  - ข้อเสีย: ถ้าทำเกินไปอาจเกิด boilerplate มาก
+
+- AlertDialog:
+  - ข้อดี: ใช้ง่ายสำหรับ modal prompts
+  - ข้อเสีย: ใช้ผิดบริบทอาจทำให้ UX ขัดจังหวะ
+
+- dio:
+  - ข้อดี: ฟีเจอร์ครบ ติดตั้งง่าย มี interceptor
+  - ข้อเสีย: ขนาดใหญ่กว่า http package, ต้องเรียนรู้ API เพิ่มเติม
+
+- riverpod:
+  - ข้อดี: ปลอดภัยกว่า Provider, test ง่าย, ไม่มี context dependency
+  - ข้อเสีย: มีแนวคิดใหม่ที่ต้องเรียนรู้
+
+==========================
+ความแตกต่างที่ต้องรู้
+==========================
+- async vs await:
+  - async: เป็นตัวบอกว่า function คืนค่า Future (เช่น Future<T> หรือ Stream<T>) และอนุญาตให้ใช้ await ภายใน
+  - await: ใช้ภายใน async function เพื่อรอผลของ Future หนึ่งตัว (pauses execution ใน function เท่านั้น ไม่บล็อก UI thread)
+  - สรุป: async คือการประกาศ function, await คือการรอ Future ภายใน function นั้น
+
+- dio vs riverpod:
+  - dio: เป็น HTTP client library (เกี่ยวกับการสื่อสารกับ API)
+  - riverpod: เป็น state management / dependency injection (จัดการ state และการให้ dependency เช่น service)
+  - สรุป: หน้าที่ต่างกัน—อาจใช้ร่วมกัน (ใช้ dio ใน service และให้ service ผ่าน provider ของ riverpod)
+
+==========================
+ตัวอย่างโค้ดสั้น ๆ (Flutter + Riverpod + Dio)
+- แสดงการแยก module: service (ApiService), providers (dioProvider, apiServiceProvider, postsProvider)
+- ใช้ async/await ใน ApiService.fetchPosts()
+- แสดง AlertDialog เมื่อเกิด error
+==========================
+*/
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:dio/dio.dart';
 
-import '../../../features/shop/models/brand_model.dart';
-import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/enums.dart';
-import '../../../utils/constants/sizes.dart';
-import '../../../utils/helpers/helper_functions.dart';
-import '../custom_shapes/containers/rounded_container.dart';
-import '../images/t_circular_image.dart';
-import '../texts/t_brand_title_text_with_verified_icon.dart';
+// --------- SERVICE (module) ----------
+class ApiService {
+  final Dio _dio;
+  ApiService(this._dio);
 
-/// A card widget representing a brand.
-class TBrandCard extends StatelessWidget {
-  /// Default constructor for the TBrandCard.
-  ///
-  /// Parameters:
-  ///   - brand: The brand model to display.
-  ///   - showBorder: A flag indicating whether to show a border around the card.
-  ///   - onTap: Callback function when the card is tapped.
-  const TBrandCard({
-    super.key,
-    required this.brand,
-    required this.showBorder,
-    this.onTap,
-  });
+  // ตัวอย่าง async/await: ฟังก์ชันนี้เป็น async และคืนค่า Future<List<dynamic>>
+  Future<List<dynamic>> fetchPosts() async {
+   try {
+    // await จะรอการทำงานของ Future (HTTP request) ให้เสร็จ
+    final response =
+       await _dio.get('https://jsonplaceholder.typicode.com/posts');
+    // สมมติ response.data เป็น List
+    return response.data as List<dynamic>;
+   } on DioException catch (e) {
+    // แปลง exception เพื่อให้ UI หรือ provider รับรู้
+    throw Exception('Dio error: ${e.message}');
+   } catch (e) {
+    throw Exception('Unexpected error: $e');
+   }
+  }
+}
 
-  final BrandModel brand;
-  final bool showBorder;
-  final void Function()? onTap;
+// --------- RIVERPOD PROVIDERS (dependency & state) ----------
+final dioProvider = Provider<Dio>((ref) {
+  final dio = Dio();
+  // กำหนดค่าเริ่มต้น เช่น timeout, interceptors ฯลฯ
+  dio.options.connectTimeout = const Duration(seconds: 10);
+  dio.options.receiveTimeout = const Duration(seconds: 10);
+  return dio;
+});
+
+final apiServiceProvider = Provider<ApiService>((ref) {
+  return ApiService(ref.read(dioProvider));
+});
+
+// FutureProvider เหมาะกับงานที่คืนค่า Future (เช่น network fetch)
+final postsProvider = FutureProvider<List<dynamic>>((ref) async {
+  final api = ref.read(apiServiceProvider);
+  // ใช้ async/await เพื่อรอผลจาก ApiService.fetchPosts()
+  return await api.fetchPosts();
+});
+
+// --------- UI (Flutter app) ----------
+void main() {
+  // ProviderScope จำเป็นสำหรับ Riverpod
+  runApp(const ProviderScope(child: MyApp()));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-    final isDark = THelperFunctions.isDarkMode(context);
-    return GestureDetector(
-      onTap: onTap,
-      /// Container Design
-      child: TRoundedContainer(
-        showBorder: showBorder,
-        backgroundColor: Colors.transparent,
-        padding: const EdgeInsets.all(TSizes.sm),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            /// -- Icon
-            Flexible(
-              child: TCircularImage(
-                image: brand.image,
-                isNetworkImage: true,
-                backgroundColor: Colors.transparent,
-                overlayColor: isDark ? TColors.white : TColors.black,
-              ),
-            ),
-            const SizedBox(width: TSizes.spaceBtwItems / 2),
-
-            /// -- Texts
-            // [Expanded] & Column [MainAxisSize.min] is important to keep the elements in the vertical center and also
-            // to keep text inside the boundaries.
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TBrandTitleWithVerifiedIcon(title: brand.name, brandTextSize: TextSizes.large),
-                  Text(
-                    '${brand.productsCount ?? 0} products',
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+   return MaterialApp(
+    title: 'Advanced Programming 66 - Demo',
+    home: const HomePage(),
+   );
   }
 }
+
+class HomePage extends ConsumerWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+   // ref.watch จะ subscribe postsProvider
+   final postsAsync = ref.watch(postsProvider);
+
+   return Scaffold(
+    appBar: AppBar(title: const Text('Advanced Programming 66')),
+    body: postsAsync.when(
+      data: (posts) {
+       // แสดงรายการสั้น ๆ
+       return ListView.builder(
+        itemCount: posts.length,
+        itemBuilder: (context, index) {
+          final item = posts[index];
+          return ListTile(
+           title: Text(item['title'] ?? 'No title'),
+           subtitle: Text('id: ${item['id']}'),
+           onTap: () {
+            // แสดง AlertDialog เมื่อแตะรายการ
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+               title: const Text('Post detail'),
+               content: Text(item['body'] ?? ''),
+               actions: [
+                TextButton(
+                   onPressed: () => Navigator.pop(context),
+                   child: const Text('Close'))
+               ],
+              ),
+            );
+           },
+          );
+        },
+       );
+      },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (err, stack) {
+       // แสดง AlertDialog แบบไม่บล็อกการ build (ใช้ addPostFrameCallback)
+       WidgetsBinding.instance.addPostFrameCallback((_) {
+        showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+           title: const Text('Error'),
+           content: Text(err.toString()),
+           actions: [
+            TextButton(
+               onPressed: () => Navigator.pop(context),
+               child: const Text('Close'))
+           ],
+          ),
+        );
+       });
+       // แสดง placeholder ขณะรอผู้ใช้ปิด dialog
+       return Center(
+          child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.error, color: Colors.red),
+          const SizedBox(height: 8),
+          const Text('เกิดข้อผิดพลาด'),
+          const SizedBox(height: 8),
+          ElevatedButton(
+           onPressed: () {
+            // ลอง ref.refresh เพื่อ reload provider (modular & reactive)
+            ref.refresh(postsProvider);
+           },
+           child: const Text('Retry'),
+          )
+        ],
+       ));
+      },
+    ),
+    floatingActionButton: FloatingActionButton(
+      child: const Icon(Icons.info),
+      onPressed: () {
+       // ตัวอย่างการเรียก AlertDialog แบบ manual (ไม่เกี่ยวกับ provider)
+       showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text('Example AlertDialog'),
+          content: const Text('นี่คือตัวอย่าง AlertDialog แบบง่าย'),
+          actions: [
+           TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'))
+          ],
+        ),
+       );
+      },
+    ),
+   );
+  }
+}
+
+/* ==========================
+  สรุปสั้น ๆ (How-to / Best practices)
+  ==========================
+- ใช้ async/await เมื่อทำงานกับ Future เพื่อให้โค้ดอ่านง่าย
+- แยก concerns: network (ApiService), DI/state (providers), UI (widgets) => modular programming
+- ใช้ dio เมื่ออยากได้ฟีเจอร์ HTTP ขั้นสูง (interceptors, retry, cancel)
+- ใช้ riverpod ในการจัดการ state และให้ dependency (เช่น ApiService)
+- ใช้ AlertDialog สำหรับ modal prompts, อย่าใช้งานบ่อยเกินไปจนรบกวน UX
+
+=========================
+End of file
+=========================
+*/

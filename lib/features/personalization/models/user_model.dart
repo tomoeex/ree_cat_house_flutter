@@ -47,15 +47,14 @@ class UserModel {
       phoneNumber: "",
       profilePicture: "");
 
-  // Convert model to JSON structure for storing data in Firebase.
-  Map<String, dynamic> toJson() {
+ Map<String, dynamic> toJson() {
     return {
       'FirstName': firstName,
       'LastName': lastName,
       'Username': username,
       'Email': email,
       'PhoneNumber': phoneNumber,
-      'ProfilePicture': profilePicture,
+      'ProfilePicture': profilePicture
     };
   }
 
@@ -70,7 +69,7 @@ class UserModel {
       username: data['Username'] ?? "",
       email: data['Email'] ?? "",
       phoneNumber: data['PhoneNumber'] ?? "",
-      profilePicture: data['ProfilePicture'] ?? "",
+      profilePicture: data['ProfilePicture'] ?? ""
     );
   }
 }

@@ -70,7 +70,7 @@ static const String successfulPaymentIcon ="assets/icons/payment_methods/success
 static const String user = "assets/images/user/user.png";
 
  // -- Phone Authentication Images
-static const String docerAnimation = "assets/images/animations/docerAnimation.gif";
+static const String docerAnimation = "assets/images/animations/docerAnimation.json";
 
 // Products
 static const String productImage1 = "assets/images/products/DryFood (1).png";
