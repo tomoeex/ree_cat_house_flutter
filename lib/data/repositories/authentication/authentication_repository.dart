@@ -105,26 +105,12 @@ Future<void> sendEmailVerification() async {
     throw 'Something went wrong. Please try again';
   }
 }
-/// [ReAuthenticate] - ReAuthenticate User
+
 
 /// [EmailAuthentication] - FORGET PASSWORD
-
-/* ----------------------------------- Federated identity & social sign-in -----------------------------------*/
-
-/// [GoogleAuthentication] - GOOGLE
-Future<UserCredential?> signInWithGoogle() async {
+Future<void> sendPasswordResetEmail(String email) async {
   try {
-    //final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    //if (googleUser == null) return null; // User aborted the sign-in
-
-    //final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    //final credential = GoogleAuthProvider.credential(
-      //accessToken: googleAuth.accessToken,
-      //idToken: googleAuth.idToken,
-    //);
-
-    //return await _auth.signInWithCredential(credential);
-
+    await _auth.sendPasswordResetEmail(email: email);
   } on FirebaseAuthException catch (e) {
     throw RFirebaseAuthException(e.code).message;
   } on FirebaseException catch (e) {
@@ -134,10 +120,15 @@ Future<UserCredential?> signInWithGoogle() async {
   } on PlatformException catch (e) {
     throw RPlatformException(e.code).message;
   } catch (e) {
-    if (kDebugMode) print('Something went wrong: $e');
-    return null;
+    throw 'Something went wrong. Please try again';
   }
 }
+/// [ReAuthenticate] - ReAuthenticate Use
+
+/* ----------------------------------- Federated identity & social sign-in ( error ) -----------------------------------*/
+
+/// [GoogleAuthentication] - GOOGLE
+
 /// [FacebookAuthentication] - FACEBOOK
 
 /* ----------------------------------- end Federated identity & social sign-in -----------------------------------*/
