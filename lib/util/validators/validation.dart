@@ -1,4 +1,4 @@
-
+ 
 class RValidator {
   /// Empty Text Validation
   static String? validateEmptyText(String? fieldName, String? value) {
