@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ree_cat_house/features/authentication/screens/login/login.dart';
 import 'package:ree_cat_house/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:ree_cat_house/features/authentication/screens/signup/verify_email.dart';
@@ -111,7 +112,32 @@ Future<void> sendEmailVerification() async {
 /* ----------------------------------- Federated identity & social sign-in -----------------------------------*/
 
 /// [GoogleAuthentication] - GOOGLE
+Future<UserCredential?> signInWithGoogle() async {
+  try {
+    //final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    //if (googleUser == null) return null; // User aborted the sign-in
 
+    //final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    //final credential = GoogleAuthProvider.credential(
+      //accessToken: googleAuth.accessToken,
+      //idToken: googleAuth.idToken,
+    //);
+
+    //return await _auth.signInWithCredential(credential);
+
+  } on FirebaseAuthException catch (e) {
+    throw RFirebaseAuthException(e.code).message;
+  } on FirebaseException catch (e) {
+    throw RFirebaseException(e.code).message;
+  } on FormatException catch (_) {
+    throw const RFormatException();
+  } on PlatformException catch (e) {
+    throw RPlatformException(e.code).message;
+  } catch (e) {
+    if (kDebugMode) print('Something went wrong: $e');
+    return null;
+  }
+}
 /// [FacebookAuthentication] - FACEBOOK
 
 /* ----------------------------------- end Federated identity & social sign-in -----------------------------------*/
@@ -136,3 +162,5 @@ Future<void> logout() async {
 
 /// DELETE USER - Remove user Auth and Firestore Account.
 }
+
+
