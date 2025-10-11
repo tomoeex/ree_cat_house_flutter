@@ -6,6 +6,8 @@ import 'package:ree_cat_house/common/widgets/custom_shapes/containers/primary_he
 import 'package:ree_cat_house/common/widgets/list_tiles/srttings_menu_tile.dart';
 import 'package:ree_cat_house/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
+import 'package:ree_cat_house/data/repositories/authentication/authentication_repository.dart';
+import 'package:ree_cat_house/features/authentication/screens/login/login.dart';
 import 'package:ree_cat_house/features/personalization/screens/address/address.dart';
 import 'package:ree_cat_house/features/personalization/screens/profile/profile.dart';
 import 'package:ree_cat_house/features/shop/screens/cart/cart.dart';
@@ -126,9 +128,62 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: 'Set image quality to be seen',
                     trailing: Switch(value: false, onChanged: (value) {}),
                   ),
+
+                const SizedBox(height: RSizes.spaceBtwSections),
+                
+                  /// ✅ ปุ่ม Logout สไตล์มินิมอล
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Colors.grey),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      onPressed: () async {
+                        // ยืนยันก่อนออก
+                        final confirm = await showDialog<bool>(
+                          context: context,
+                          builder: (ctx) => AlertDialog(
+                            title: const Text('Logout'),
+                            content: const Text(
+                                'Are you sure you want to log out?'),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(ctx, false),
+                                child: const Text('Cancel'),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(ctx, true),
+                                child: const Text(
+                                  'Yes, Logout',
+                                  style: TextStyle(color: Colors.redAccent),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+
+                        if (confirm ?? false) {
+                          await AuthenticationRepository.instance.logout();
+                          Get.offAll(() => const LoginScreen());
+                        }
+                      },
+                      child: const Text(
+                        'Logout',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
