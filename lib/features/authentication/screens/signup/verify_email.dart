@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ree_cat_house/common/widgets/success_screen/success_screen.dart';
 import 'package:ree_cat_house/data/repositories/authentication/authentication_repository.dart';
 import 'package:ree_cat_house/features/authentication/controllers/signup/verify_email_controller.dart';
-import 'package:ree_cat_house/features/authentication/screens/login/login.dart';
 import 'package:ree_cat_house/util/constants/image_strings.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/constants/text_strings.dart';

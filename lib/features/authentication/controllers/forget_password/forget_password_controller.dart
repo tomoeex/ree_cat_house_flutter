@@ -15,7 +15,7 @@ class ForgetPasswordController extends GetxController {
   GlobalKey<FormState> forgetPasswordFormKey = GlobalKey<FormState>();
 
   /// Send Reset Password EMail
-  sendPasswordResetEmail() async {
+  Future<void> sendPasswordResetEmail() async {
     try {
       // Start Loading
       RFullScreenLoader.openLoadingDialog('Processing your request...', RImages.docerAnimation);
@@ -50,7 +50,7 @@ class ForgetPasswordController extends GetxController {
     }
   }
 
-  resendPasswordResetEmail(String email) async {
+  Future<void> resendPasswordResetEmail(String email) async {
     try {
       // Start Loading
       RFullScreenLoader.openLoadingDialog('Processing your request...', RImages.docerAnimation);

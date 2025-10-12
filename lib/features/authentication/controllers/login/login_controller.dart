@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ree_cat_house/data/repositories/authentication/authentication_repository.dart';
+import 'package:ree_cat_house/features/personalization/controllers/user_controller.dart';
 import 'package:ree_cat_house/util/constants/image_strings.dart';
 import 'package:ree_cat_house/util/helpers/network_manager.dart';
 import 'package:ree_cat_house/util/popups/full_screen_loader.dart';
@@ -61,6 +62,41 @@ void onInit() {
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       // Stop loader & show error
+      RFullScreenLoader.stopLoading();
+      RLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  ///Google Sign-In Authentication
+  Future<void> googleSignIn() async {
+    try {
+      
+      // Start Loading
+      RFullScreenLoader.openLoadingDialog('Logging you in...', RImages.docerAnimation,);
+      
+      // Check Internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        RFullScreenLoader.stopLoading();
+        return;
+      }
+
+      //Google Authentication
+      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+
+      //save User Record
+      final userController = UserController.instance;
+      await userController.saveUserRecord(userCredentials);
+    
+    // Remove Loader
+    RFullScreenLoader.stopLoading();
+
+    //redirect
+    AuthenticationRepository.instance.screenRedirect();
+    }
+
+    catch (e) {
+      // Remove Loader
       RFullScreenLoader.stopLoading();
       RLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }

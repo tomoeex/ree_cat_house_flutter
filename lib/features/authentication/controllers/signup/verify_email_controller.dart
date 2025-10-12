@@ -22,7 +22,7 @@ class VerifyEmailController extends GetxController {
   }
 
   /// Send Email Verification link
-  sendEmailVerification() async {
+  Future<void> sendEmailVerification() async {
     try {
       await AuthenticationRepository.instance.sendEmailVerification();
       RLoaders.successSnackBar(title: 'Email Sent', message: 'Please Check your inbox and verify your email.');
@@ -32,7 +32,7 @@ class VerifyEmailController extends GetxController {
   }
 
 /// Timer to automatically redirect on Email Verification
-setTimerForAutoRedirect() {
+void setTimerForAutoRedirect() {
   Timer.periodic(
     const Duration(seconds: 1),
     (timer) async {
@@ -56,7 +56,7 @@ setTimerForAutoRedirect() {
 
   /// Manually Check if Email Verified
 
-checkEmailVerificationStatus() async {
+Future<void> checkEmailVerificationStatus() async {
   final currentUser = FirebaseAuth.instance.currentUser;
   if (currentUser != null && currentUser.emailVerified) {
     Get.off(

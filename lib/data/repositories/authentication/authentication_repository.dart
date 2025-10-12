@@ -32,7 +32,7 @@ class AuthenticationRepository extends GetxController {
 
 
   /// Function to Show Relevant Screen
-screenRedirect() async {
+Future<void> screenRedirect() async {
   final user = _auth.currentUser;
   if (user != null) {
     if (user.emailVerified) {
@@ -128,6 +128,35 @@ Future<void> sendPasswordResetEmail(String email) async {
 /* ----------------------------------- Federated identity & social sign-in ( error ) -----------------------------------*/
 
 /// [GoogleAuthentication] - GOOGLE
+Future<UserCredential> signInWithGoogle() async {
+  try{
+
+    ///Trigger the Authentication Flow
+    final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
+    ///Obtain the auth details from the requested account
+    final GoogleSignInAuthentication? googleAuth = await userAccount?.authentication;
+
+    ///Create a new credential
+    final credential = GoogleAuthProvider.credential(accessToken: googleAuth?.accessToken,idToken: googleAuth?.idToken);
+
+    ///Once signed in, return the UserCredential
+    return await _auth.signInWithCredential(credential);
+  } on FirebaseAuthException catch (e) {
+    throw RFirebaseAuthException(e.code).message;
+  } on FirebaseException catch (e) {
+    throw RFirebaseException(e.code).message;
+  } on FormatException catch (_) {
+    throw const RFormatException();
+  } on PlatformException catch (e) {
+    throw RPlatformException(e.code).message;
+  } catch (e) {
+    if (kDebugMode) {
+      print(e);
+    }
+    throw 'Something went wrong. Please try again';
+  }
+}
 
 /// [FacebookAuthentication] - FACEBOOK
 
@@ -153,5 +182,3 @@ Future<void> logout() async {
 
 /// DELETE USER - Remove user Auth and Firestore Account.
 }
-
-
