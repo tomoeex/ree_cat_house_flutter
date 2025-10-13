@@ -14,6 +14,7 @@ class LoginController extends GetxController {
   final rememberMe = false.obs;
   final hidePassword = true.obs;
   final localStorage = GetStorage();
+
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
@@ -25,13 +26,11 @@ void onInit() {
   super.onInit();
 }
 
-
   /// -- Email and Password SignIn
   Future<void> emailAndPasswordSignIn() async {
     try {
       // Start Loading
-      RFullScreenLoader.openLoadingDialog('Logging you in...', RImages.docerAnimation,
-      );
+      RFullScreenLoader.openLoadingDialog('Logging you in...', RImages.docerAnimation);
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -66,6 +65,7 @@ void onInit() {
       RLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
+
 
   ///Google Sign-In Authentication
   Future<void> googleSignIn() async {

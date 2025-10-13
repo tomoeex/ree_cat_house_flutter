@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ree_cat_house/features/authentication/controllers/login/login_controller.dart';
+import 'package:ree_cat_house/features/authentication/controllers/forget_password/forget_password_controller.dart';
+import 'package:ree_cat_house/features/authentication/screens/password_configuration/forget_password.dart';
+import 'package:ree_cat_house/features/authentication/screens/password_configuration/reset_password.dart';
 import 'package:ree_cat_house/features/authentication/screens/signup/signup.dart';
 import 'package:ree_cat_house/navigation_menu.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
@@ -16,6 +19,7 @@ class RLoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(LoginController());
+
     return Form(
       child: Padding(
       padding: const EdgeInsets.symmetric(vertical: RSizes.spaceBtwSections),
@@ -32,8 +36,8 @@ class RLoginForm extends StatelessWidget {
           // Password
           Obx(
             () => TextFormField(
-              validator: (value) => RValidator.validatePassword(value),
               controller: controller.password,
+              validator: (value) => RValidator.validatePassword(value),
               obscureText: controller.hidePassword.value,
               decoration: InputDecoration(
                 labelText: RTexts.password,
@@ -63,14 +67,14 @@ class RLoginForm extends StatelessWidget {
               ),
     
               // Forget Password
-              TextButton(onPressed: () => controller.emailAndPasswordSignIn(), child: const Text(RTexts.forgetPassword)),
+              TextButton(onPressed: () => Get.to(() => ForgetPasswordScreen()), child: const Text(RTexts.forgetPassword)),
             ],
           ),
     
           const SizedBox(height: RSizes.spaceBtwSections),
     
           // Sign In Button
-          SizedBox(width: double.infinity, child: ElevatedButton(onPressed: ()  => Get.to(() => NavigationMenu()), child: const Text(RTexts.signIn))),
+          SizedBox(width: double.infinity, child: ElevatedButton(onPressed: ()  => controller.emailAndPasswordSignIn(), child: const Text(RTexts.signIn))),
           const SizedBox(height: RSizes.spaceBtwItems),
           // Create Account Button
           SizedBox(

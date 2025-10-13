@@ -9,11 +9,18 @@ import 'package:ree_cat_house/util/constants/text_strings.dart';
 import 'package:ree_cat_house/util/helpers/helper_functions.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key, required this.email});
+  const ResetPasswordScreen({
+    super.key, 
+    required this.email
+  });
 
-final String email;
+  final String email;
+
   @override
   Widget build(BuildContext context) {
+
+    Get.put(ForgetPasswordController());
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -45,7 +52,7 @@ final String email;
               const SizedBox(height: RSizes.spaceBtwSections),
               SizedBox(
                 width: double.infinity,
-                child: TextButton(onPressed: () => ForgetPasswordController.instance.resendPasswordResetEmail(email), child: const Text(RTexts.resendEmail)),
+                child: TextButton(onPressed: () => ForgetPasswordController.instance.resndPasswordResetEmail(email), child: const Text(RTexts.resendEmail)),
               ),
             ],
           ),

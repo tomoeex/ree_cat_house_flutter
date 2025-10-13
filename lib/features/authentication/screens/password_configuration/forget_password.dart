@@ -6,8 +6,8 @@ import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/constants/text_strings.dart';
 import 'package:ree_cat_house/util/validators/validation.dart';
 
-class ForgetPassword extends StatelessWidget {
-  const ForgetPassword({super.key});
+class ForgetPasswordScreen extends StatelessWidget {
+  const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class ForgetPassword extends StatelessWidget {
               ),
             ), // TextFormField
             const SizedBox(height: RSizes.spaceBtwSections),
+            
             // Submit Buttonฃ
             SizedBox(
               width: double.infinity,
@@ -48,4 +49,3 @@ class ForgetPassword extends StatelessWidget {
     );
   }
 }
-

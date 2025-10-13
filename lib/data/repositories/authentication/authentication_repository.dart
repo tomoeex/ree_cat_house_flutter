@@ -34,6 +34,7 @@ class AuthenticationRepository extends GetxController {
   /// Function to Show Relevant Screen
 Future<void> screenRedirect() async {
   final user = _auth.currentUser;
+
   if (user != null) {
     if (user.emailVerified) {
       Get.offAll(() => const NavigationMenu());
@@ -107,22 +108,23 @@ Future<void> sendEmailVerification() async {
 }
 
 
-/// [EmailAuthentication] - FORGET PASSWORD
-Future<void> sendPasswordResetEmail(String email) async {
-  try {
-    await _auth.sendPasswordResetEmail(email: email);
-  } on FirebaseAuthException catch (e) {
-    throw RFirebaseAuthException(e.code).message;
-  } on FirebaseException catch (e) {
-    throw RFirebaseException(e.code).message;
-  } on FormatException catch (_) {
-    throw const RFormatException();
-  } on PlatformException catch (e) {
-    throw RPlatformException(e.code).message;
-  } catch (e) {
-    throw 'Something went wrong. Please try again';
+  /// [EmailAuthentication] - FORGET PASSWORD
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw RFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw RFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const RFormatException();
+    } on PlatformException catch (e) {
+      throw RPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
   }
-}
+
 /// [ReAuthenticate] - ReAuthenticate Use
 
 /* ----------------------------------- Federated identity & social sign-in ( error ) -----------------------------------*/

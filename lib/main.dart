@@ -3,6 +3,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ree_cat_house/data/repositories/authentication/authentication_repository.dart';
+import 'package:ree_cat_house/features/authentication/controllers/forget_password/forget_password_controller.dart';
 import 'package:ree_cat_house/features/personalization/controllers/user_controller.dart';
 import 'app.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,11 +25,11 @@ Future<void> main() async {
     (FirebaseApp value) => Get.put(AuthenticationRepository())
   );
 
-  //Put init
+  //Put Controller
   Get.put(UserController());
+  Get.put(ForgetPasswordController());
 
-  //Todo: Initialize Authentication = เริ่มต้นการตรวจสอบสิทธิ์
-
-
+  //Run App
   runApp(const App());
 }
+//Todo: Initialize Authentication = เริ่มต้นการตรวจสอบสิทธิ์
