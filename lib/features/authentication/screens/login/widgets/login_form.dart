@@ -21,6 +21,7 @@ class RLoginForm extends StatelessWidget {
     final controller = Get.put(LoginController());
 
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
       padding: const EdgeInsets.symmetric(vertical: RSizes.spaceBtwSections),
       child: Column(
@@ -49,6 +50,7 @@ class RLoginForm extends StatelessWidget {
               ),
             ),
           ),
+          
           const SizedBox(height: RSizes.spaceBtwInputFields / 2),
     
           // Remember Me & Forget Password

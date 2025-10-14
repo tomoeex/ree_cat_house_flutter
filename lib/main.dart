@@ -29,6 +29,7 @@ Future<void> main() async {
   Get.put(UserController());
   Get.put(ForgetPasswordController());
 
+
   //Run App
   runApp(const App());
 }

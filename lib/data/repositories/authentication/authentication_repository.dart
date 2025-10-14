@@ -29,10 +29,8 @@ class AuthenticationRepository extends GetxController {
     screenRedirect();
   }
 
-
-
   /// Function to Show Relevant Screen
-Future<void> screenRedirect() async {
+void screenRedirect() async {
   final user = _auth.currentUser;
 
   if (user != null) {
@@ -43,7 +41,7 @@ Future<void> screenRedirect() async {
     }
   }else {
     // Local Storage
-  deviceStorage.writeIfNull('IsFirstTime', true);
+    deviceStorage.writeIfNull('IsFirstTime', true);
 
   // Check if it's the first time launching the app
   deviceStorage.read('IsFirstTime') != true

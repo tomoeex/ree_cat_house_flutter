@@ -9,92 +9,94 @@ import 'package:ree_cat_house/util/popups/full_screen_loader.dart';
 import 'package:ree_cat_house/util/popups/loaders.dart';
 
 class LoginController extends GetxController {
-
-  /// Variables
+  
+  // Variables
   final rememberMe = false.obs;
   final hidePassword = true.obs;
   final localStorage = GetStorage();
-
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  
+
 @override
-void onInit() {
-  email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
-  password.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
-  super.onInit();
-}
-
-  /// -- Email and Password SignIn
-  Future<void> emailAndPasswordSignIn() async {
-    try {
-      // Start Loading
-      RFullScreenLoader.openLoadingDialog('Logging you in...', RImages.docerAnimation);
-
-      // Check Internet Connectivity
-      final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) {
-        RFullScreenLoader.stopLoading();
-        return;
-      }
-
-      // Form Validation
-      if (!loginFormKey.currentState!.validate()) {
-        RFullScreenLoader.stopLoading();
-        return;
-      }
-
-      // Save Data if Remember Me is selected
-      if (rememberMe.value) {
-        localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
-        localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
-      }
-
-      // Login user using Email & Password Authentication
-      final userCredentials = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
-
-      // Remove Loader
-      RFullScreenLoader.stopLoading();
-
-      // Redirect after login success
-      AuthenticationRepository.instance.screenRedirect();
-    } catch (e) {
-      // Stop loader & show error
-      RFullScreenLoader.stopLoading();
-      RLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    }
+  void onInit() {
+    email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
+    password.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
+    super.onInit();
   }
 
+/// [EmailAndPasswordLogin]
+Future<void> emailAndPasswordSignIn() async {
+  try {
+    
+    // Start Loading
+    RFullScreenLoader.openLoadingDialog('Logging you in...', RImages.docerAnimation);
 
-  ///Google Sign-In Authentication
-  Future<void> googleSignIn() async {
-    try {
-      
-      // Start Loading
-      RFullScreenLoader.openLoadingDialog('Logging you in...', RImages.docerAnimation,);
-      
-      // Check Internet Connectivity
-      final isConnected = await NetworkManager.instance.isConnected();
+    // Check Internet Connectivity
+    final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         RFullScreenLoader.stopLoading();
+        RLoaders.customToast(message: 'No Internet Connection');
         return;
-      }
+    }
 
-      //Google Authentication
-      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+    // Form Validation
+    if (!loginFormKey.currentState!.validate()) {
+      RFullScreenLoader.stopLoading();
+      return;
+    }
 
-      //save User Record
-      final userController = UserController.instance;
-      await userController.saveUserRecord(userCredentials);
+    // Save Data if Remember Me is selected
+    if (rememberMe.value) {
+      localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
+      localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
+      
+    }
     
+    // Login user using EMail & Password Authentication
+      final userCredentials = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+
     // Remove Loader
     RFullScreenLoader.stopLoading();
 
+    // Redirect
+    AuthenticationRepository.instance.screenRedirect();
+
+  }catch (e) {
+      RFullScreenLoader.stopLoading();
+      RLoaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+    }
+  }
+
+/// [GoogleSignInAuthentication]
+///Google Sign-In Authentication
+  Future<void> googleSignIn() async {
+    try {
+     
+      // Start Loading
+      RFullScreenLoader.openLoadingDialog('Logging you in...', RImages.docerAnimation,);
+     
+      // Check Internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        RFullScreenLoader.stopLoading();
+        return;
+      }
+ 
+      //Google Authentication
+      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+ 
+      //save User Record
+      final userController = UserController.instance;
+      await userController.saveUserRecord(userCredentials);
+   
+    // Remove Loader
+    RFullScreenLoader.stopLoading();
+ 
     //redirect
     AuthenticationRepository.instance.screenRedirect();
     }
-
+ 
     catch (e) {
       // Remove Loader
       RFullScreenLoader.stopLoading();
@@ -102,3 +104,10 @@ void onInit() {
     }
   }
 }
+
+// Login / Email / Password
+// wararat.91148@gmail 
+// Tomoexxxx19@
+
+// Login Google
+// wraratnphiriyaxarung@gmail.com
