@@ -2,7 +2,7 @@
 class RTexts {
   // -- GLOBAL Texts
   static const String submit = "Submit";
-  static const String appName = "T-Store";
+  static const String appName = "Ree-Cat";
   static const String tContinue = "Continue";
 
   // -- OnBoarding Texts
@@ -52,11 +52,6 @@ class RTexts {
   static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
   
   // -- Home
-
   static const String homeAppBarTitle = "Good day for shopping";
-  // static const String homeAppBarTitle = "วันนี้เหมาะสำหรับการช็อปปิ้ง";
   static const String homeAppBarSubTitle = "Tomoexx moonLight";
-
-
-  // static const String homeAppBarSubTitle = "ไทมูร์ ซิกันเดอร์";
 }

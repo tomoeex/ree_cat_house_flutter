@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ree_cat_house/common/widgets/appbar/appbar.dart';
 import 'package:ree_cat_house/common/widgets/images/r_circular_image.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
+import 'package:ree_cat_house/features/personalization/controllers/user_controller.dart';
+import 'package:ree_cat_house/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:ree_cat_house/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:ree_cat_house/util/constants/image_strings.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
@@ -11,6 +14,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return Scaffold(
       appBar: const RAppBar(showBackArrow: true, title: Text('Profile')),
 
@@ -38,8 +43,8 @@ class ProfileScreen extends StatelessWidget {
               const RSectionHeading(title: 'Profile Information', showActionButton: false),
               const SizedBox(height: RSizes.spaceBtwItems),
 
-              RProfileMenu( title: 'Name', value: 'Tomoexx', onPressed: () {},),
-              RProfileMenu(title: 'Username', value: 'moonLight', onPressed: () {}),
+              RProfileMenu( title: 'Name', value: controller.user.value.fullName, onPressed: () => Get.to(() => const ChangeName())),
+              RProfileMenu(title: 'Username', value: controller.user.value.username, onPressed: () {}),
 
               const SizedBox(height: RSizes.spaceBtwItems),
               const Divider(),
@@ -49,9 +54,9 @@ class ProfileScreen extends StatelessWidget {
               const RSectionHeading(title: 'Personal Information', showActionButton: false),
               const SizedBox(height: RSizes.spaceBtwItems),
 
-              RProfileMenu(title: 'User ID', value: '45689', onPressed: () {}),
-              RProfileMenu(title: 'E-mail', value: 'tomoexx@example.com', onPressed: () {}),
-              RProfileMenu(title: 'Phone Number', value: '+66-080-4860144', onPressed: () {}),
+              RProfileMenu(title: 'User ID', value: controller.user.value.id, onPressed: () {}),
+              RProfileMenu(title: 'E-mail', value: controller.user.value.email, onPressed: () {}),
+              RProfileMenu(title: 'Phone Number', value: controller.user.value.phoneNumber, onPressed: () {}),
               RProfileMenu(title: 'Gender', value: 'Female', onPressed: () {}),
               RProfileMenu(title: 'Date of Birth', value: '9 Nov, 2005', onPressed: () {}),
               const Divider(),
@@ -59,7 +64,7 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                  onPressed: (){}, 
+                  onPressed: () => controller.deleteAccountWarningPopup(), 
                   child: const Text('Close Account', style: TextStyle(color: Colors.red),)
                   ),
               )

@@ -26,11 +26,10 @@ Future<void> main() async {
   );
 
   //Put Controller
-  Get.put(UserController());
-  Get.put(ForgetPasswordController());
+  //Get.put(UserController());
+  //Get.put(ForgetPasswordController());
 
 
   //Run App
   runApp(const App());
 }
-//Todo: Initialize Authentication = เริ่มต้นการตรวจสอบสิทธิ์
