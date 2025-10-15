@@ -49,6 +49,10 @@ static const String promoBanners3 = "assets/images/banners/promo-banner-3.png";
 static const String promoBanners4 = "assets/images/banners/promo-banner-4.png";
 static const String promoBanners5 = "assets/images/banners/promo-banner-5.png";
 static const String promoBanners6 = "assets/images/banners/promo-banner-6.png";
+static const String banner1 = "assets/images/banners/banner_1.jpg";
+static const String banner2 = "assets/images/banners/banner_2.jpg";
+static const String banner3 = "assets/images/banners/banner_3.jpg";
+
 
 // /// -- Product Reviews
 static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.png";
@@ -92,6 +96,19 @@ static const String successfulPaymentIcon ="assets/icons/payment_methods/success
 
 // profile
 static const String user = "assets/images/user/user.png";
+
+// Brand Icons - สำหรับสินค้าแมว
+static const String vFcoreLogo = "assets/icons/brands/VFcore.png";
+static const String meOLogo = "assets/icons/brands/Me-O.png";
+static const String kanivaLogo = "assets/icons/brands/Kaniva.png";
+static const String royalCaninLogo = "assets/icons/brands/RoyalCanin.png";
+static const String lifemateLogo = "assets/icons/brands/Lifemate.png";
+static const String purinaOneLogo = "assets/icons/brands/PurinaONE.png";
+static const String pramyLogo = "assets/icons/brands/Pramy.png";
+
+// แบรนด์รวม และ ไม่มีแบรนด์
+static const String pawAndCoLogo = "assets/icons/brands/Paw&Co.png";  // Paw & Co ทุกอย่างรวม
+static const String noBrands = "assets/icons/brands/no_brands.png";      // no brands
 
 
 // Products

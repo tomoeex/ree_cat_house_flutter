@@ -3,13 +3,15 @@ import 'package:ree_cat_house/common/widgets/brand/brand_show_case.dart';
 import 'package:ree_cat_house/common/widgets/layouts/grid_layout.dart';
 import 'package:ree_cat_house/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
+import 'package:ree_cat_house/features/shop/models/category_model.dart';
 import 'package:ree_cat_house/util/constants/image_strings.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 
 
 class RCategoryTab extends StatelessWidget {
-  const RCategoryTab({super.key});
+  const RCategoryTab({super.key, required this.category});
 
+  final CategoryModel category;
   @override
   Widget build(BuildContext context) {
     return ListView(

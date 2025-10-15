@@ -8,6 +8,7 @@ import 'package:ree_cat_house/common/widgets/layouts/grid_layout.dart';
 import 'package:ree_cat_house/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ree_cat_house/common/widgets/brand/brand_card.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
+import 'package:ree_cat_house/features/shop/controllers/category_controller.dart';
 import 'package:ree_cat_house/features/shop/screens/brand/all_brand.dart';
 
 import 'package:ree_cat_house/features/shop/screens/store/widgets/category_tab.dart';
@@ -19,12 +20,13 @@ import 'package:ree_cat_house/util/helpers/helper_functions.dart';
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
 
+    final categories = CategoryController.instance.featuredCategories;
+
     return DefaultTabController(
-      length: 9,
+      length: categories.length,
       child: Scaffold(
         appBar: RAppBar(
           title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
@@ -68,38 +70,14 @@ class StoreScreen extends StatelessWidget {
                   ),
                 ),
                 // /// Tabs -- Tutorial
-                bottom: RTabBar(
-                  tabs: const [
-                      Tab(child: Text('Dry Food')),              // อาหารเม็ดแมว
-                      Tab(child: Text('Wet Food')),              // อาหารเปียก/ซอง
-                      Tab(child: Text('Treats')),                // ขนมแมว
-                      Tab(child: Text('Litter')),                // ทรายแมว
-                      Tab(child: Text('Toys')),                  // ของเล่นแมว
-                      Tab(child: Text('Essentials')),            // อุปกรณ์จำเป็น (ชามอาหาร, กรง, กระเป๋าใส่แมว ฯลฯ)
-                      Tab(child: Text('Health')),                // สุขภาพแมว (อาหารเสริม, วิตามิน, ยา)
-                      Tab(child: Text('Grooming')),              // การดูแลขน/ความสะอาด (แปรง, แชมพู, ตัดเล็บ)
-                      Tab(child: Text('Clothing & Accessories')), // เสื้อผ้าและเครื่องประดับแมว (เสื้อ, ปลอกคอ, หมวก)
-                    ],
-                ),
-                
+                bottom: TabBar(tabs: categories.map((category) => Tab(child: Text(category.name))).toList()),
               ),
             ];
           },
       
-          /// --- Body --- Tutorial [Section # 3, Video # 8]
           body: TabBarView(
-            children: [
-              RCategoryTab(),
-              RCategoryTab(),
-              RCategoryTab(),
-              RCategoryTab(),
-              RCategoryTab(),
-              RCategoryTab(),
-              RCategoryTab(),
-              RCategoryTab(),
-              RCategoryTab(),
-            ],
-          ), 
+            children: categories.map((category) => RCategoryTab(category: category)).toList()
+          ),
         ),
       ),
     );
