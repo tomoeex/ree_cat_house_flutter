@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ree_cat_house/data/repositories/authentication/authentication_repository.dart';
 import 'package:ree_cat_house/features/personalization/models/user_model.dart';
 import 'package:ree_cat_house/util/exceptions/firebase_exceptions.dart';
@@ -95,4 +99,20 @@ Future<void> updateSingleField(Map<String, dynamic> json) async {
   }
 
   /// Upload any Image
+    Future<String> uploadImage(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
+    } on FirebaseException catch (e) {
+      throw RFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const RFormatException();
+    } on PlatformException catch (e) {
+      throw RPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 }

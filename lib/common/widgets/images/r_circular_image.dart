@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:ree_cat_house/common/widgets/shimmers/shimmer.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
 import 'package:ree_cat_house/util/helpers/helper_functions.dart';
@@ -34,11 +36,22 @@ class RCircularImage extends StatelessWidget {
         color: backgroundColor ?? (RHelperFunctions.isDarkMode(context) ? RColors.black : RColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: Center(
-        child: Image(
-          fit: fit,
-          image: isNetworkImage ? NetworkImage(image) : AssetImage(image) as ImageProvider,
-          color: overlayColor,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Center(
+          child: isNetworkImage
+              ? CachedNetworkImage(
+                  fit: fit,
+                  color: overlayColor,
+                  imageUrl: image,
+                  progressIndicatorBuilder: (context, url, downloadProgress) => const RShimmerEffect(width: 55, height: 55),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                )
+              : Image(
+                  fit: fit,
+                  image: AssetImage(image),
+                  color: overlayColor,
+                ),
         ),
       ),
     );

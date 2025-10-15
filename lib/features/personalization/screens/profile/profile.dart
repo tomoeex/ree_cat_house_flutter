@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ree_cat_house/common/widgets/appbar/appbar.dart';
 import 'package:ree_cat_house/common/widgets/images/r_circular_image.dart';
+import 'package:ree_cat_house/common/widgets/shimmers/shimmer.dart';
 import 'package:ree_cat_house/common/widgets/texts/section_heading.dart';
 import 'package:ree_cat_house/features/personalization/controllers/user_controller.dart';
 import 'package:ree_cat_house/features/personalization/screens/profile/widgets/change_name.dart';
@@ -30,12 +31,18 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const RCircularImage(image: RImages.user, width: 80, height: 80),
-                    TextButton(onPressed: () {}, child: const Text('Change Profile Picture')),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : RImages.user;
+                      return controller.imageUploading.value
+                          ? const RShimmerEffect(width: 80, height: 80, radius: 80)
+                          : RCircularImage(image: image, width: 80, height: 80, isNetworkImage: networkImage.isNotEmpty);
+                    }),
+                    TextButton(onPressed: () => controller.uploadUserProfilePicture(), child: const Text('Change Profile Picture')
+                    ),
                   ],
                 ),
               ),
-
               /// Details
               const SizedBox(height: RSizes.spaceBtwItems / 2),
               const Divider(),

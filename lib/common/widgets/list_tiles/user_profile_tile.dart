@@ -18,9 +18,11 @@ class RUserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = UserController.instance;
+    final networkImage = controller.user.value.profilePicture;
+    final image = networkImage.isNotEmpty ? networkImage : RImages.user;
 
     return ListTile(
-      leading: const RCircularImage(image: RImages.user, width: 50, height: 50, padding: 0),
+      leading: RCircularImage(image: image, width: 50, height: 50, isNetworkImage: networkImage.isNotEmpty, padding: 0),
       title: Text(controller.user.value.fullName, style: Theme.of(context).textTheme.headlineSmall!.apply(color: RColors.white)),
       subtitle: Text(controller.user.value.email, style: Theme.of(context).textTheme.bodyMedium!.apply(color: RColors.white)),
       trailing: IconButton(onPressed: onPressed, icon: const Icon(Iconsax.edit, color: RColors.white,)),

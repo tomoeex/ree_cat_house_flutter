@@ -14,12 +14,14 @@ import 'package:ree_cat_house/features/shop/screens/cart/cart.dart';
 import 'package:ree_cat_house/features/shop/screens/order/order.dart';
 import 'package:ree_cat_house/util/constants/colors.dart';
 import 'package:ree_cat_house/util/constants/sizes.dart';
+import 'package:ree_cat_house/util/helpers/helper_functions.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final dark = RHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -30,15 +32,9 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   /// -- App Bar ด้านบน
                   RAppBar(
-                    title: Text(
-                      'Account',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium!
-                          .apply(color: RColors.white),
+                    title: Text('Account', style: Theme.of(context).textTheme.headlineMedium!.apply(color: RColors.white),
                     ),
                   ),
-
                   /// -- โปรไฟล์ผู้ใช้
                   RUserProfileTile(
                     onPressed: () => Get.to(() => const ProfileScreen()),
@@ -148,8 +144,7 @@ class SettingsScreen extends StatelessWidget {
                           context: context,
                           builder: (ctx) => AlertDialog(
                             title: const Text('Logout'),
-                            content: const Text(
-                                'Are you sure you want to log out?'),
+                            content: const Text('Are you sure you want to log out?'),
                             actions: [
                               TextButton(
                                 onPressed: () => Navigator.pop(ctx, false),
@@ -171,12 +166,10 @@ class SettingsScreen extends StatelessWidget {
                           Get.offAll(() => const LoginScreen());
                         }
                       },
-                      child: const Text(
-                        'Logout',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          color: Colors.black87,
+                      child: Text('Logout',style: TextStyle(
+                        fontWeight: FontWeight.w600, 
+                        fontSize: 16, 
+                        color: dark ? RColors.light : RColors.black,
                         ),
                       ),
                     ),
